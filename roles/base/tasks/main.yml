@@ -190,4 +190,9 @@
 - name: Install vagrant
   tags: [vagrant]
   apt:
-    deb: "https://releases.hashicorp.com/vagrant/{{ vagrant.version }}/vagrant_{{ vagrant.version }}_x86_64.deb"
+    deb: https://releases.hashicorp.com/vagrant/{{ vagrant.version }}/vagrant_{{ vagrant.version }}_x86_64.deb
+
+- name: Install ripgrep
+  tags: [ripgrep]
+  apt:
+    deb: https://github.com/BurntSushi/ripgrep/releases/download/{{ ripgrep.version }}/ripgrep_{{ ripgrep.version }}_amd64.deb

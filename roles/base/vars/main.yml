@@ -17,3 +17,6 @@ aws_vault:
 
 vagrant:
   version: 2.2.4
+
+ripgrep:
+  version: 0.10.0
