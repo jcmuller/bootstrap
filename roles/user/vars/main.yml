@@ -9,11 +9,12 @@ golang:
   version: 1.12.1
   packages:
     - github.com/cyberark/summon/cmd
+    - github.com/github/hub
     - github.com/gopasspw/gopass
+    - github.com/jcmuller/version_manager_shell_string/cmd/version_manager_shell_string
+    - github.com/jinzhu/grb
+    - github.com/sclevine/yj
     - golang.org/x/tools/cmd/goimports
     - golang.org/x/tools/cmd/gopls
     - golang.org/x/tools/cmd/guru
     - golang.org/x/tools/internal/lsp
-    - github.com/jcmuller/version_manager_shell_string/cmd/version_manager_shell_string
-    - github.com/github/hub
-    - github.com/sclevine/yj

@@ -170,7 +170,7 @@
     path: ~/bin
     state: directory
 - name: Install go packages
-  tags: [golang, goenv]
+  tags: [golang, goenv, go-packages]
   shell: "~/.goenv/versions/{{ golang.version }}/bin/go get -u {{ item }}"
   with_items: "{{ golang.packages }}"
 - name: link cmd to summon
