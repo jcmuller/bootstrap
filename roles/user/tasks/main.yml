@@ -1,5 +1,19 @@
 # vim: set foldmethod=marker:
 ---
+# Clone custom-oh-my-zsh {{{
+- name: Ensure MyStuff directory exists
+  tags: [zsh]
+  file:
+    path: ~/Development/MyStuff
+    state: directory
+- name: Clone custom-oh-my-zsh
+  tags: [zsh]
+  git:
+    repo: git@github.com:jcmuller/custom-oh-my-zsh.git
+    dest: ~/Development/MyStuff/custom-oh-my-zsh
+    accept_hostkey: true
+    update: true
+# }}}
 # Install yadm {{{
 - name: Clone yadm
   tags: [yadm]
@@ -42,18 +56,6 @@
     url: https://www.dropbox.com/download?dl=packages/dropbox.py
     dest: ~/bin/dropbox
     mode: 0755
-# }}}
-# Clone custom-oh-my-zsh {{{
-- name: Ensure MyStuff directory exists
-  tags: [zsh]
-  file:
-    path: ~/Development/MyStuff
-    state: directory
-- name: Clone custom-oh-my-zsh
-  tags: [zsh]
-  git:
-    repo: git@github.com:jcmuller/custom-oh-my-zsh.git
-    dest: ~/Development/MyStuff/custom-oh-my-zsh
 # }}}
 # Install Ruby {{{
 - name: Install rbenv
