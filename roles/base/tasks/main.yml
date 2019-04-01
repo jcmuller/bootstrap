@@ -1,5 +1,6 @@
 ---
 - name: Install packages
+  tags: [packages, core]
   apt:
     name:
       - apt-transport-https
@@ -29,6 +30,8 @@
       - moreutils
       - openssh-server
       - openvpn
+      - pass
+      - pass-extension-tail
       - pkg-config
       - phantomjs
       - postgresql-client
@@ -40,11 +43,13 @@
       - python-pip
       - python3-pip
       - python-virtualenv
+      - qrencode
       - redis-tools
       - rofi
       - shellcheck
       - sloccount
       - tmux
+      - tree
       - traceroute
       - virtualbox
       - virtualenvwrapper
