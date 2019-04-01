@@ -1,0 +1,64 @@
+---
+- name: Provision a new computer
+  hosts: all, localhost
+  gather_facts: no
+
+  vars:
+    user:
+      name: jcmuller
+      group: jcmuller
+    ubuntu:
+      release: cosmic
+
+  pre_tasks:
+    - name: Update all packages
+      apt:
+        upgrade: dist
+        update_cache: yes
+      become: true
+    - name: Create user
+      user:
+        name: "{{ user.name }}"
+        groups: sudo
+        append: true
+        shell: /usr/bin/zsh
+      become: true
+
+  roles:
+    - role: base
+      tags: [base]
+      become: true
+
+    - role: vpn
+      tags: [vpn]
+      become: true
+
+    - role: user
+      tags: [user]
+      become: true
+      become_user: "{{ user.name }}"
+
+    - role: user-as-root
+      tags: [user-as-root]
+      become: true
+
+    - role: neovim
+      tags: [neovim]
+      become: true
+      become_user: "{{ user.name }}"
+
+    - role: install-neovim
+      tags: [neovim]
+      become: true
+
+    - role: iptables
+      tags: [iptables]
+      become: true
+
+  post_tasks:
+    - name: Add {{ user.name }} to docker group
+      user:
+        name: "{{ user.name }}"
+        groups: docker
+        append: true
+      become: true

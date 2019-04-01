@@ -1,0 +1,19 @@
+---
+docker_compose:
+  version: 1.24.0
+
+slack:
+  version: 3.3.8
+
+docker_engine:
+  version: 17*
+  ubuntu_release: bionic
+
+slackcat:
+  version: "1.6"
+
+aws_vault:
+  version: 4.5.1
+
+vagrant:
+  version: 2.2.4

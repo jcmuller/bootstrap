@@ -1,0 +1,188 @@
+---
+- name: Install packages
+  apt:
+    name:
+      - apt-transport-https
+      - awscli
+      - build-essential
+      - ca-certificates
+      - cmake
+      - curl
+      - default-jre
+      - dunst
+      - duplicity
+      - emacs
+      - gconf2
+      - gettext # neovim
+      - git
+      - gnupg2
+      - gnutls-bin
+      - graphviz
+      - htop
+      - jq
+      - laptop-mode-tools
+      - ldap-utils
+      - libtool-bin # neovim
+      - libpq-dev
+      - libssl-dev # required for older version of ruby
+      - libreadline-dev
+      - moreutils
+      - openssh-server
+      - openvpn
+      - pkg-config
+      - phantomjs
+      - postgresql-client
+      - powerline
+      - powertop
+      - py3status
+      - python-boto
+      - python-dev
+      - python-pip
+      - python3-pip
+      - python-virtualenv
+      - redis-tools
+      - rofi
+      - shellcheck
+      - sloccount
+      - tmux
+      - traceroute
+      - virtualbox
+      - virtualenvwrapper
+      - xclip
+      - zsh
+    state: latest
+    update_cache: true
+
+- name: Install ruby build dependencies
+  tags: [ruby, packages]
+  apt:
+    name:
+      - libgmp-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - zlib1g-dev
+    state: latest
+
+- name: Install desktop packages
+  tags: [packages, desktop]
+  apt:
+    name:
+      - arandr
+      - gimp
+      - firefox
+      - i3
+      - i3lock-fancy
+      - maim
+      - xfonts-terminus
+    state: latest
+
+- name: Add powerline symbols to terminus font
+  tags: [packages, powerline]
+  copy:
+    src: 11-powerline-symbols-terminus.conf
+    dest: /etc/fonts/conf.d/
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Install slack client
+  tags: [packages, desktop, slack]
+  apt:
+    deb: "https://downloads.slack-edge.com/linux_releases/slack-desktop-{{ slack.version }}-amd64.deb"
+    state: present
+
+- name: Install spotify
+  tags: [packages, desktop, spotify]
+  command: sudo snap install spotify
+
+- name: Add apt keys for docker
+  tags: [packages, docker]
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+
+- name: Add apt repository for docker
+  tags: [packages, docker]
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ docker_engine.ubuntu_release }} stable"
+    state: present
+    update_cache: yes
+
+- name: Install docker
+  tags: [packages, docker]
+  apt:
+    pkg: docker-ce
+    state: present
+
+- name: Install docker-compose
+  tags: [packages, docker]
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/{{ docker_compose.version }}/docker-compose-Linux-x86_64"
+    dest: /usr/local/bin/docker-compose
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Add apt keys for gcloud
+  tags: [packages, gcloud]
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+- name: Add apt repository for gcloud
+  tags: [packages, gcloud]
+  apt_repository:
+    repo: deb http://packages.cloud.google.com/apt cloud-sdk-{{ ubuntu.release }} main
+    state: present
+    update_cache: yes
+
+- name: Install gcloud
+  tags: [packages, gcloud]
+  apt:
+    pkg: google-cloud-sdk
+    state: present
+
+- name: Add sudoers files
+  tags: [sudoers]
+  copy:
+    src: sudoers.d/
+    dest: /etc/sudoers.d/
+    owner: root
+    group: root
+    mode: 0440
+    validate: "visudo -cf %s"
+
+- name: Modify nsswitch.conf
+  tags: [nsswitch]
+  copy:
+    src: nsswitch.conf
+    dest: /etc/
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+
+- name: Install heroku toolbelt
+  tags: [heroku]
+  shell: wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+
+- name: Install Slackcat
+  tags: [slackcat]
+  get_url:
+    url: "https://github.com/bcicen/slackcat/releases/download/v{{ slackcat.version }}/slackcat-{{ slackcat.version }}-linux-amd64"
+    dest: /usr/local/bin/slackcat
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install aws-vault
+  tags: [aws]
+  get_url:
+    url: "https://github.com/99designs/aws-vault/releases/download/v{{ aws_vault.version }}/aws-vault-linux-amd64"
+    dest: /usr/local/bin/aws-vault
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install vagrant
+  tags: [vagrant]
+  apt:
+    deb: "https://releases.hashicorp.com/vagrant/{{ vagrant.version }}/vagrant_{{ vagrant.version }}_x86_64.deb"

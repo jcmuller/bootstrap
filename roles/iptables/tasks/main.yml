@@ -1,0 +1,22 @@
+---
+- name: Install iptables-persistent
+  tags: [iptables]
+  apt:
+    name: iptables-persistent
+    state: latest
+- name: Configure iptables
+  tags: [iptables]
+  copy:
+    src: iptables
+    dest: /etc/network/if-pre-up.d/
+    mode: 0755
+- name: Copy iptables scripts
+  tags: [iptables]
+  copy:
+    src: "{{ item }}"
+    dest: /usr/local/bin/
+    mode: 0755
+  with_fileglob:
+    - iptables*.sh
+- name: Run iptables once
+  command: iptables.sh

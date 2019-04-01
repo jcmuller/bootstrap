@@ -1,0 +1,4 @@
+- name: Install neovim
+  make:
+    chdir: "/home/{{ user.name }}/Development/OSS/neovim"
+    target: install

@@ -1,0 +1,177 @@
+# vim: set foldmethod=marker:
+---
+# Install yadm {{{
+- name: Clone yadm
+  tags: [yadm]
+  git:
+    repo: https://github.com/TheLocehiliosan/yadm.git
+    dest: ~/.yadm-src
+- name: Ensure bin exists
+  tags: [yadm, dropbox]
+  file:
+    dest: ~/bin
+    mode: 0755
+    state: directory
+- name: Install yadm
+  tags: [yadm]
+  file:
+    src: ~/.yadm-src/yadm
+    dest: ~/bin/yadm
+    state: link
+    mode: 0755
+- name: Yadm get config
+  command: ~/bin/yadm clone git@github.com:jcmuller/dotrcs.git
+# }}}
+# {{{ Install antigen
+- name: Antigen
+  tags: [antigen, zsh]
+  git:
+    repo: https://github.com/zsh-users/antigen
+    dest: ~/.antigen-src
+# }}}
+# Install dropbox {{{
+- name: Install dropboxd
+  tags: [dropbox]
+  shell: wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+  args:
+    chdir: ~/
+    creates: ~/.dropbox-dist/dropboxd
+- name: Install dropbox
+  tags: [dropbox]
+  get_url:
+    url: https://www.dropbox.com/download?dl=packages/dropbox.py
+    dest: ~/bin/dropbox
+    mode: 0755
+# }}}
+# Clone custom-oh-my-zsh {{{
+- name: Ensure MyStuff directory exists
+  tags: [zsh]
+  file:
+    path: ~/Development/MyStuff
+    state: directory
+- name: Clone custom-oh-my-zsh
+  tags: [zsh]
+  git:
+    repo: git@github.com:jcmuller/custom-oh-my-zsh.git
+    dest: ~/Development/MyStuff/custom-oh-my-zsh
+# }}}
+# Install Ruby {{{
+- name: Install rbenv
+  tags: [ruby, rbenv]
+  git:
+    repo: https://github.com/rbenv/rbenv.git
+    dest: ~/.rbenv
+- name: Ensure rbenv plugins directory exists
+  tags: [ruby, rbenv]
+  file:
+    path: ~/.rbenv/plugins
+    state: directory
+- name: Install ruby-build
+  tags: [ruby, rbenv]
+  git:
+    repo: https://github.com/rbenv/ruby-build.git
+    dest: ~/.rbenv/plugins/ruby-build
+- name: Install rbenv-update
+  tags: [ruby, rbenv]
+  git:
+    repo: https://github.com/rkh/rbenv-update.git
+    dest: ~/.rbenv/plugins/rbenv-update
+- name: Install rbenv-vars
+  tags: [ruby, rbenv]
+  git:
+    repo: https://github.com/rbenv/rbenv-vars.git
+    dest: ~/.rbenv/plugins/rbenv-vars
+- name: "Install ruby {{ ruby.version }}"
+  tags: [ruby, rbenv]
+  command: "~/.rbenv/bin/rbenv install {{ ruby.version }}"
+  args:
+    creates: "~/.rbenv/versions/{{ ruby.version }}"
+- name: Define ruby version
+  tags: [ruby, rbenv]
+  command: "~/.rbenv/bin/rbenv global {{ ruby.version }}"
+  args:
+    creates: ~/.rbenv/version
+- name: Rehash ruby binaries
+  tags: [ruby, rbenv]
+  command: ~/.rbenv/bin/rbenv rehash
+# }}}
+# Install Node {{{
+- name: Install nodenv
+  tags: [node, javascript, nodenv]
+  git:
+    repo: https://github.com/nodenv/nodenv.git
+    dest: ~/.nodenv
+- name: Ensure nodenv plugins directory exists
+  tags: [node, javascript, nodenv]
+  file:
+    path: ~/.nodenv/plugins
+    state: directory
+- name: Install ruby-build
+  tags: [node, javascript, nodenv]
+  git:
+    repo: https://github.com/nodenv/node-build.git
+    dest: ~/.nodenv/plugins/nodenv-build
+- name: Install nodenv-update
+  tags: [node, javascript, nodenv]
+  git:
+    repo: https://github.com/nodenv/nodenv-update.git
+    dest: ~/.nodenv/plugins/nodenv-update
+- name: Install nodenv-vars
+  tags: [node, javascript, nodenv]
+  git:
+    repo: https://github.com/nodenv/nodenv-vars.git
+    dest: ~/.nodenv/plugins/nodenv-vars
+- name: "Install node {{ node.version }}"
+  tags: [node, javascript, nodenv]
+  command: "~/.nodenv/bin/nodenv install {{ node.version }}"
+  args:
+    creates: "~/.nodenv/versions/{{ node.version }}"
+- name: Define node version
+  tags: [node, javascript, nodenv]
+  command: "~/.nodenv/bin/nodenv global {{ node.version }}"
+  args:
+    creates: ~/.nodenv/version
+- name: Rehash node binaries
+  tags: [node, javascript, nodenv]
+  command: ~/.nodenv/bin/nodenv rehash
+# }}}
+# Install Golang {{{
+- name: Install goenv
+  tags: [golang, goenv]
+  git:
+    repo: https://github.com/syndbg/goenv.git
+    dest: ~/.goenv
+- name: Install goenv-update
+  tags: [golang, goenv]
+  git:
+    repo: https://github.com/jcmuller/goenv-update.git
+    dest: ~/.goenv/plugins/goenv-update
+- name: "Install go {{ golang.version }}"
+  tags: [golang, goenv]
+  command: "~/.goenv/bin/goenv install {{ golang.version }}"
+  args:
+    creates: "~/.goenv/versions/{{ golang.version }}"
+- name: Create directory ~/bin
+  tags: [golang, goenv]
+  file:
+    path: ~/bin
+    state: directory
+- name: Install go packages
+  tags: [golang, goenv]
+  shell: "~/.goenv/versions/{{ golang.version }}/bin/go get -u {{ item }}"
+  with_items: "{{ golang.packages }}"
+- name: link cmd to summon
+  tags: [golang, goenv]
+  file:
+    src: ~/go/bin/cmd
+    dest: ~/bin/summon
+    state: link
+- name: Define go version
+  tags: [golang, goenv]
+  command: "~/.goenv/bin/goenv global {{ golang.version }}"
+  args:
+    creates: ~/.goenv/version
+- name: Rehash go binaries
+  tags: [golang, goenv]
+  command: ~/.goenv/bin/goenv rehash
+# }}}
