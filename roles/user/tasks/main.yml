@@ -83,6 +83,17 @@
   git:
     repo: https://github.com/rbenv/rbenv-vars.git
     dest: ~/.rbenv/plugins/rbenv-vars
+- name: Install rbenv-default-gems
+  tags: [ruby, rbenv]
+  git:
+    repo: https://github.com/rbenv/rbenv-default-gems.git
+    dest: ~/.rbenv/plugins/rbenv-default-gems
+- name: Configure rbenv-default-gems
+  tags: [ruby, rbenv, default-gems]
+  copy:
+    src: default-gems
+    dest: ~/.rbenv/
+    mode: 0755
 - name: "Install ruby {{ ruby.version }}"
   tags: [ruby, rbenv]
   command: "~/.rbenv/bin/rbenv install {{ ruby.version }}"
