@@ -2,3 +2,24 @@
   make:
     chdir: "/home/{{ user.name }}/Development/OSS/neovim"
     target: install
+
+- name: Remove vim
+  tags: [novim, neovim]
+  apt:
+    name:
+      - vim
+      - vim-nox
+      - vim-tiny
+    state: absent
+
+- name: Register neovim as a vim alternative
+  alternatives:
+    name: vim
+    path: /usr/local/bin/nvim
+
+- name: Install vimdiff
+  tags: [vimdiff]
+  copy:
+    src: vimdiff
+    dest: /usr/local/bin/
+    mode: 0755
