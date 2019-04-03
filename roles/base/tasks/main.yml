@@ -127,6 +127,15 @@
     group: root
     mode: 0755
 
+- name: Install docker-machine
+  tags: [packages, docker, docker-machine]
+  get_url:
+    url: "https://github.com/docker/machine/releases/download/v{{ docker_machine.version }}/docker-machine-Linux-x86_64"
+    dest: /usr/local/bin/docker-machine
+    owner: root
+    group: root
+    mode: 0755
+
 - name: Add apt keys for gcloud
   tags: [packages, gcloud]
   apt_key:

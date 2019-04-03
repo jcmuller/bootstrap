@@ -2,6 +2,9 @@
 docker_compose:
   version: 1.24.0
 
+docker_machine:
+  version: 0.16.0
+
 slack:
   version: 3.3.8
 
