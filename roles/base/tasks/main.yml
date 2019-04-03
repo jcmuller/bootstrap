@@ -119,7 +119,7 @@
     state: present
 
 - name: Install docker-compose
-  tags: [packages, docker]
+  tags: [packages, docker, docker-compose]
   get_url:
     url: "https://github.com/docker/compose/releases/download/{{ docker_compose.version }}/docker-compose-Linux-x86_64"
     dest: /usr/local/bin/docker-compose
