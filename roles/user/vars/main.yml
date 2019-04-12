@@ -14,6 +14,7 @@ golang:
     - github.com/jcmuller/version_manager_shell_string/cmd/version_manager_shell_string
     - github.com/jinzhu/grb
     - github.com/sclevine/yj
+    - golang.org/x/lint/golint
     - golang.org/x/tools/cmd/goimports
     - golang.org/x/tools/cmd/gopls
     - golang.org/x/tools/cmd/guru
