@@ -188,3 +188,8 @@
   tags: [golang, goenv]
   command: ~/.goenv/bin/goenv rehash
 # }}}
+- name: Build browserpass-native
+  tags: [browserpass]
+  make:
+    target: configure
+    chdir: ~/go/src/github.com/browserpass/browserpass-native

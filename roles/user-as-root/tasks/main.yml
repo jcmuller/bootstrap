@@ -9,3 +9,11 @@
     src: "/home/{{ user.name }}/go/bin/gopass"
     dest: /usr/local/lib/summon/gopass
     state: link
+- name: Install browserpass-native
+  tags: [browserpass]
+  make:
+    target: "{{ item }}"
+    chdir: "{{ user.home }}/go/src/github.com/browserpass/browserpass-native"
+  with_items:
+    - install
+    - hosts-firefox
