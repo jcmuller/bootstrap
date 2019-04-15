@@ -9,6 +9,16 @@
     src: "/home/{{ user.name }}/go/bin/gopass"
     dest: /usr/local/lib/summon/gopass
     state: link
+- name: Ensure zsh is installed
+  tags: [zsh]
+  apt:
+    name: zsh
+- name: Set shell to zsh
+  tags: [zsh]
+  user:
+    name: "{{ user.name }}"
+    append: true
+    shell: /usr/bin/zsh
 - name: Install browserpass-native
   tags: [browserpass]
   make:
