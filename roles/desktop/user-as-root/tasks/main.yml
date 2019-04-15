@@ -3,10 +3,10 @@
     dest: /usr/local/lib/summon
     state: directory
 - name: link gopass for summon
-  tags: [golang, goenv]
+  tags: [golang, goenv, gopass]
   become: true
   file:
-    src: "/home/{{ user.name }}/go/bin/gopass"
+    src: "/home/{{ user.name }}/bin/gopasspwd"
     dest: /usr/local/lib/summon/gopass
     state: link
 - name: Ensure zsh is installed

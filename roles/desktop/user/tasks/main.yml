@@ -21,7 +21,7 @@
     repo: https://github.com/TheLocehiliosan/yadm.git
     dest: ~/.yadm-src
 - name: Ensure bin exists
-  tags: [yadm, dropbox]
+  tags: [yadm, dropbox, gopass]
   file:
     dest: ~/bin
     mode: 0755
@@ -35,6 +35,14 @@
     mode: 0755
 - name: Yadm get config
   command: ~/bin/yadm clone git@github.com:jcmuller/dotrcs.git
+# }}}
+# {{{ Install gopasspwd
+- name: Copy gopasspwd
+  tags: [gopass]
+  copy:
+    src: gopasspwd
+    dest: ~/bin
+    mode: 0755
 # }}}
 # {{{ Install antigen
 - name: Antigen

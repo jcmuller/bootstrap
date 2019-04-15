@@ -26,37 +26,37 @@
       become: true
 
   roles:
-    - role: base
+    - role: desktop/base
       tags: [base]
       become: true
 
-    - role: vpn
+    - role: desktop/vpn
       tags: [vpn]
       become: true
 
-    - role: user
+    - role: desktop/user
       tags: [user]
       become: true
       become_user: "{{ user.name }}"
 
-    - role: user-as-root
+    - role: desktop/user-as-root
       tags: [user-as-root]
       become: true
 
-    - role: neovim
+    - role: desktop/neovim
       tags: [neovim]
       become: true
       become_user: "{{ user.name }}"
 
-    - role: install-neovim
+    - role: desktop/install-neovim
       tags: [neovim]
       become: true
 
-    - role: iptables
+    - role: desktop/iptables
       tags: [iptables]
       become: true
 
-    #- role: work
+    #- role: desktop/work
     #  tags: [work]
     #  become: true
 

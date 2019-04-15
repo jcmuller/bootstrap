@@ -20,3 +20,4 @@ golang:
     - golang.org/x/tools/cmd/gopls
     - golang.org/x/tools/cmd/guru
     - golang.org/x/tools/internal/lsp
+    - mvdan.cc/sh/cmd/shfmt
