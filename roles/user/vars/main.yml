@@ -8,6 +8,7 @@ node:
 golang:
   version: 1.12.1
   packages:
+    - github.com/browserpass/browserpass-native
     - github.com/cyberark/summon/cmd
     - github.com/github/hub
     - github.com/gopasspw/gopass
