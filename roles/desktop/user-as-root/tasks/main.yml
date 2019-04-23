@@ -2,13 +2,14 @@
   file:
     dest: /usr/local/lib/summon
     state: directory
-- name: link gopass for summon
+    mode: 0755
+- name: Add gopass for summon
   tags: [golang, goenv, gopass]
   become: true
-  file:
-    src: "/home/{{ user.name }}/bin/gopasspwd"
+  copy:
+    src: gopasspwd
     dest: /usr/local/lib/summon/gopass
-    state: link
+    mode: 0755
 - name: Ensure zsh is installed
   tags: [zsh]
   apt:

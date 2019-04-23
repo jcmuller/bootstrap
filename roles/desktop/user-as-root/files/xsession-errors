@@ -1,0 +1,10 @@
+/home/jcmuller/.xsession-errors
+{
+  rotate 4
+  copytruncate
+  maxsize 10M
+  daily
+  missingok
+  notifempty
+  compress
+}
