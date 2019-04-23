@@ -11,6 +11,7 @@ golang:
     - github.com/99designs/aws-vault
     - github.com/browserpass/browserpass-native
     - github.com/cyberark/summon/cmd
+    - github.com/git-duet/git-duet
     - github.com/github/hub
     - github.com/gopasspw/gopass
     - github.com/jcmuller/version_manager_shell_string/cmd/version_manager_shell_string
