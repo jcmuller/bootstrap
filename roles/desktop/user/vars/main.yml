@@ -23,4 +23,5 @@ golang:
     - golang.org/x/tools/cmd/gopls
     - golang.org/x/tools/cmd/guru
     - golang.org/x/tools/internal/lsp
+    - gopkg.in/Netflix-Skunkworks/go-jira.v1/
     - mvdan.cc/sh/cmd/shfmt
