@@ -27,3 +27,9 @@
   with_items:
     - install
     - hosts-firefox
+- name: Install logrotate config for xsession-errors
+  tags: [xsession]
+  copy:
+    src: xsession-errors
+    dest: /etc/logrotate.d/
+    mode: 0644
