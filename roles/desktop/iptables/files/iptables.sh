@@ -218,6 +218,9 @@ iptables -A OUTPUT -p tcp -d 192.168.11.11 --dport 3000 -j ACCEPT
 iptables -A OUTPUT -p tcp -d 192.168.11.11 --dport 8123 -j ACCEPT
 iptables -A OUTPUT -p tcp -d 192.168.86.11 --dport 5050 -j ACCEPT
 
+# GPG
+iptables -A OUTPUT -p tcp --dport 11371 -j ACCEPT
+
 # Set up logging for incoming traffic.
 # iptables -N LOGNDROP
 # iptables -A LOGNDROP   -m limit --limit 5/min -j LOG --log-prefix "iptables denied: "
