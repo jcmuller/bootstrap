@@ -76,6 +76,7 @@ iptables -A OUTPUT -p tcp --dport 8080      -j ACCEPT # Node Red
 iptables -A OUTPUT -p udp --dport 57621     -j ACCEPT # Spotify
 iptables -A OUTPUT -p tcp --dport 993       -j ACCEPT # Mail
 iptables -A OUTPUT -p udp --sport 51413     -j ACCEPT # Transmission
+iptables -A OUTPUT -p icmp                  -j ACCEPT # Pings
 
 # DOCKER
 iptables -A FORWARD -p udp --dport 53 -i docker0    -j ACCEPT
