@@ -22,7 +22,6 @@ echo 1 > /proc/sys/net/ipv4/conf/all/log_martians
 # Flush all existing chains
 iptables --flush
 
-
 # Set up logging for incoming traffic.
 # iptables -N LOGNDROP
 # iptables -A LOGNDROP -j LOG --log-prefix "DD-AGENT THING: "
@@ -103,7 +102,6 @@ iptables -A FORWARD -p tcp --dport 5432             -j ACCEPT # Linked PG contai
 iptables -A FORWARD -p tcp --sport 5432             -j ACCEPT # Linked PG container
 iptables -A FORWARD -p tcp --sport 143              -j ACCEPT # Linked imap container
 iptables -A FORWARD -p tcp --dport 143              -j ACCEPT # Linked imap container
-
 
 # stupid matrix server
 iptables -A OUTPUT -p tcp --dport 5582 -d 54.243.48.167 -j ACCEPT
