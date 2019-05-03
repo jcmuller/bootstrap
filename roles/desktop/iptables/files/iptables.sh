@@ -175,9 +175,13 @@ iptables -A OUTPUT -p udp -d home.juancmuller.com --dport 1194 -j ACCEPT
 iptables -A OUTPUT -p tcp --dport 9418 -j ACCEPT
 
 # Canon IJP
+iptables -A INPUT -p udp -d 172.18.203.255 --dport 8611 -j DROP
 iptables -A INPUT -p udp -d 172.18.203.255 --dport 8612 -j DROP
+iptables -A INPUT -p udp -d 172.18.3.255 --dport 8611 -j DROP
 iptables -A INPUT -p udp -d 172.18.3.255 --dport 8612 -j DROP
+iptables -A INPUT -p udp -d 192.168.1.255 --dport 8611 -j DROP
 iptables -A INPUT -p udp -d 192.168.1.255 --dport 8612 -j DROP
+iptables -A INPUT -p udp -d 224.0.0.1 --dport 8611 -j DROP
 iptables -A INPUT -p udp -d 224.0.0.1 --dport 8612 -j DROP
 
 # IGMP
