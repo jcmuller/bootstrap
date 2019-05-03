@@ -169,6 +169,8 @@ iptables -A OUTPUT -p tcp -d prod-green.vpn.greenhouse.io --dport 1194 -j ACCEPT
 iptables -A OUTPUT -p udp -d prod-usw2-green.vpn.greenhouse.io --dport 1194 -j ACCEPT
 iptables -A OUTPUT -p tcp -d prod-usw2-green.vpn.greenhouse.io --dport 1194 -j ACCEPT
 
+iptables -A OUTPUT -p udp -d home.juancmuller.com --dport 1194 -j ACCEPT
+
 # Git
 iptables -A OUTPUT -p tcp --dport 9418 -j ACCEPT
 
