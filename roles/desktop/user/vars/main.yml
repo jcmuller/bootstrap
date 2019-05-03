@@ -13,6 +13,7 @@ golang:
     - github.com/cyberark/summon/cmd
     - github.com/git-duet/git-duet
     - github.com/github/hub
+    - github.com/go-delve/delve/cmd/dlv
     - github.com/gopasspw/gopass
     - github.com/jcmuller/version_manager_shell_string/cmd/version_manager_shell_string
     - github.com/jinzhu/grb
