@@ -48,6 +48,7 @@
       - rofi
       - shellcheck
       - sloccount
+      - socat
       - tmux
       - tree
       - traceroute
