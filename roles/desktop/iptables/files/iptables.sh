@@ -89,13 +89,16 @@ iptables -A FORWARD -p tcp --sport 443 -o docker0   -j ACCEPT
 iptables -A FORWARD -p tcp --dport 9418 -i docker0  -j ACCEPT
 iptables -A FORWARD -p tcp --sport 9418 -o docker0  -j ACCEPT
 
-iptables -A OUTPUT -p tcp --dport 6379 -o docker0   -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 5432 -o docker0   -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 11211 -o docker0  -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 143 -o docker0    -j ACCEPT
 iptables -A OUTPUT -p tcp --dport 25 -o docker0     -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 143 -o docker0    -j ACCEPT
 iptables -A OUTPUT -p tcp --dport 465 -o docker0    -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 4040 -o docker0   -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 5432 -o docker0   -j ACCEPT
 iptables -A OUTPUT -p tcp --dport 587 -o docker0    -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 6379 -o docker0   -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 11211 -o docker0  -j ACCEPT
+
+iptables -A INPUT -p tcp --dport 5432 -o docker0 -j ACCEPT
 
 #iptables -A INPUT -p tcp -i docker0 --dport 25432  -j ACCEPT
 #iptables -A OUTPUT -p tcp -o docker0 --sport 25432 -j ACCEPT
@@ -211,12 +214,28 @@ iptables -A OUTPUT -p tcp --dport 5000 -j ACCEPT
 iptables -A INPUT -p udp --dport 54915 -j DROP
 iptables -A OUTPUT -p udp --dport 54915 -j DROP
 
-# HASS
-iptables -A OUTPUT -p tcp -d 192.168.11.11 -j ACCEPT
-iptables -A INPUT -p tcp -d 192.168.11.11 -j DROP
-iptables -A OUTPUT -p tcp -d 192.168.11.11 --dport 3000 -j ACCEPT
-iptables -A OUTPUT -p tcp -d 192.168.11.11 --dport 8123 -j ACCEPT
-iptables -A OUTPUT -p tcp -d 192.168.86.11 --dport 5050 -j ACCEPT
+# NFS
+# denied  TCP 192.168.86.203:733 > 192.168.30.3:2049 (out:enp0s31f6)
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.20.3 --dport   111 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.20.3 --dport   111 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.20.3 --dport  2049 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.20.3 --dport 32803 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.20.3 --dport 32769 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.20.3 --dport   892 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.20.3 --dport   892 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.20.3 --dport   875 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.20.3 --dport   875 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.20.3 --dport   662 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.20.3 --dport   662 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.20.3 --dport   744 -j ACCEPT
+
+# IOT
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.30.11 --dport 3000 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.30.11 --dport 5050 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.30.11 --dport 8123 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.40.33 --dport 8765 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.40.33 --dport 8081:8085 -j ACCEPT
+iptables -A INPUT -p tcp -d 192.168.30.11 -j DROP
 
 # GPG
 iptables -A OUTPUT -p tcp --dport 11371 -j ACCEPT
