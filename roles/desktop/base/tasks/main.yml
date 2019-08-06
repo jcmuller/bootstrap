@@ -228,3 +228,12 @@
     src: https://github.com/buildpack/pack/releases/download/v0.3.0/pack-v0.3.0-linux.tgz
     dest: /usr/local/bin
     remote_src: yes
+
+- name: Install z
+  tags: z
+  get_url:
+    url: "https://raw.githubusercontent.com/rupa/z/{{ z.version }}/z.sh"
+    dest: /usr/local/bin
+    owner: root
+    group: root
+    mode: 0755

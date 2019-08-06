@@ -32,3 +32,6 @@ bats:
 
 pack:
   version: v0.2.2
+
+z:
+  version: v1.11
