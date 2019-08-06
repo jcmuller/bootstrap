@@ -6,7 +6,7 @@ docker_machine:
   version: 0.16.0
 
 slack:
-  version: 3.3.8
+  version: 4.0.1
 
 docker_engine:
   version: 17*
@@ -16,10 +16,19 @@ slackcat:
   version: "1.6"
 
 aws_vault:
-  version: 4.5.1
+  version: 4.6.2
 
 vagrant:
   version: 2.2.4
 
 ripgrep:
-  version: 0.10.0
+  version: 11.0.2
+
+argo:
+  version: v2.3.0
+
+bats:
+  version: v1.1.0
+
+pack:
+  version: v0.2.2

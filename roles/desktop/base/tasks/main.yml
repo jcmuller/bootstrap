@@ -206,3 +206,25 @@
   tags: [ripgrep]
   apt:
     deb: https://github.com/BurntSushi/ripgrep/releases/download/{{ ripgrep.version }}/ripgrep_{{ ripgrep.version }}_amd64.deb
+
+- name: Install argo
+  get_url:
+    url: "https://github.com/argoproj/argo/releases/download/{{ argo.version }}/argo-linux-amd64"
+    dest: /usr/local/bin/argo
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install bats
+  get_url:
+    url: "https://raw.githubusercontent.com/bats-core/bats-core/{{ bats.version }}/bin/bats"
+    dest: /usr/local/bin/
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install pack
+  unarchive:
+    src: https://github.com/buildpack/pack/releases/download/v0.3.0/pack-v0.3.0-linux.tgz
+    dest: /usr/local/bin
+    remote_src: yes
