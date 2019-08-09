@@ -250,3 +250,12 @@
     owner: root
     group: root
     mode: 0755
+
+- name: Install kubectl
+  tags: kubectl
+  get_url:
+    url: https://storage.googleapis.com/kubernetes-release/release/{{ kubectl.version }}/bin/linux/amd64/kubectl
+    dest: /usr/local/bin
+    owner: root
+    group: root
+    mode: 0755
