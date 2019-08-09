@@ -45,6 +45,7 @@
       - python-virtualenv
       - qrencode
       - redis-tools
+      - redshift-gtk
       - rofi
       - shellcheck
       - sloccount
