@@ -204,6 +204,18 @@
   tags: [golang, goenv]
   command: ~/.goenv/bin/goenv rehash
 # }}}
+# Install pyenv {{{
+- name: Install pyenv
+  tags: [python, pyenv]
+  git:
+    repo: https://github.com/pyenv/pyenv.git
+    dest: ~/.pyenv
+- name: Install pyenv-update
+  tags: [python, pyenv]
+  git:
+    repo: https://github.com/pyenv/pyenv-update.git
+    dest: ~/.pyenv/plugins/pyenv-update
+# }}}
 # Install browserpass-native {{{
 - name: Build browserpass-native
   tags: [browserpass]
