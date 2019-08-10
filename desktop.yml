@@ -37,6 +37,14 @@
         append: true
         shell: /usr/bin/zsh
       become: true
+      when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+    - name: Create user
+      user:
+        name: "{{ user.name }}"
+        append: true
+        shell: /usr/bin/zsh
+      become: true
+      when: ansible_distribution == 'Archlinux'
 
   roles:
     - role: desktop/base
