@@ -1,7 +1,7 @@
 ---
 - name: Provision a new computer
   hosts: all, localhost
-  gather_facts: no
+  gather_facts: yes
 
   vars:
     user:
@@ -12,11 +12,24 @@
       release: cosmic
 
   pre_tasks:
+    - name: What is this?
+      tags: pre_tasks
+      debug:
+        msg: "{{ ansible_distribution }}"
     - name: Update all packages
+      tags: pre_tasks
       apt:
         upgrade: dist
         update_cache: yes
       become: true
+      when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+    - name: Update all packages
+      tags: pre_tasks
+      pacman:
+        upgrade: yes
+        update_cache: yes
+      become: true
+      when: ansible_distribution == 'Archlinux'
     - name: Create user
       user:
         name: "{{ user.name }}"
