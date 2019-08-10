@@ -56,9 +56,9 @@
       tags: [iptables]
       become: true
 
-    #- role: desktop/work
-    #  tags: [work]
-    #  become: true
+    - role: desktop/work
+      tags: [work]
+      become: true
 
   post_tasks:
     - name: Add {{ user.name }} to docker group

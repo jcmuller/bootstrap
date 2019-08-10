@@ -2,39 +2,21 @@
 docker_compose:
   version: 1.24.0
 
-docker_machine:
-  version: 0.16.0
-
-slack:
-  version: 4.0.1
-
 docker_engine:
   version: 17*
   ubuntu_release: bionic
 
-slackcat:
-  version: "1.6"
-
-aws_vault:
-  version: 4.6.2
-
-vagrant:
-  version: 2.2.4
+docker_machine:
+  version: 0.16.0
 
 ripgrep:
   version: 11.0.2
 
-argo:
-  version: v2.3.0
+slack:
+  version: 4.0.1
 
-bats:
-  version: v1.1.0
-
-pack:
-  version: v0.2.2
+slackcat:
+  version: "1.6"
 
 z:
   version: v1.11
-
-kubectl:
-  version: v1.15.2

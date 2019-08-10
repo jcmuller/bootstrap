@@ -1,0 +1,47 @@
+- name: Install kubectl
+  tags: kubectl
+  get_url:
+    url: https://storage.googleapis.com/kubernetes-release/release/{{ kubectl.version }}/bin/linux/amd64/kubectl
+    dest: /usr/local/bin
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install argo
+  tags: argo
+  get_url:
+    url: "https://github.com/argoproj/argo/releases/download/{{ argo.version }}/argo-linux-amd64"
+    dest: /usr/local/bin/argo
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install aws-vault
+  tags: [aws]
+  get_url:
+    url: "https://github.com/99designs/aws-vault/releases/download/v{{ aws_vault.version }}/aws-vault-linux-amd64"
+    dest: /usr/local/bin/aws-vault
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install vagrant
+  tags: [vagrant]
+  apt:
+    deb: https://releases.hashicorp.com/vagrant/{{ vagrant.version }}/vagrant_{{ vagrant.version }}_x86_64.deb
+
+- name: Install pack
+  tags: pack
+  unarchive:
+    src: https://github.com/buildpack/pack/releases/download/v0.3.0/pack-v0.3.0-linux.tgz
+    dest: /usr/local/bin
+    remote_src: yes
+
+- name: Install bats
+  tags: bats
+  get_url:
+    url: "https://raw.githubusercontent.com/bats-core/bats-core/{{ bats.version }}/bin/bats"
+    dest: /usr/local/bin/
+    owner: root
+    group: root
+    mode: 0755
