@@ -16,3 +16,12 @@ pack:
 
 vagrant:
   version: 2.2.4
+
+stern:
+  version: 1.11.0
+
+minikube:
+  version: v1.3.1
+
+helm:
+  version: v2.14.3
