@@ -30,3 +30,8 @@ golang:
     - golang.org/x/tools/internal/lsp
     - gopkg.in/Netflix-Skunkworks/go-jira.v1/
     - mvdan.cc/sh/cmd/shfmt
+
+helm:
+  plugins:
+    - source: https://github.com/databus23/helm-diff
+      version: "v2.11.0+5"
