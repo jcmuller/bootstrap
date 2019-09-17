@@ -105,3 +105,22 @@
     owner: root
     group: root
     mode: 0755
+
+- name: Install terraform cli
+  tags: [terraform]
+  unarchive:
+    src: "https://releases.hashicorp.com/terraform/{{terraform.version}}/terraform_{{terraform.version}}_linux_amd64.zip"
+    dest: /usr/local/bin
+    remote_src: yes
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Symlink terraform
+  tags: [terraform]
+  file:
+    src: /usr/local/bin/terraform
+    dest: /usr/local/bin/tf
+    owner: root
+    group: root
+    state: link

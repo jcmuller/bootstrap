@@ -25,3 +25,6 @@ minikube:
 
 helm:
   version: v2.14.3
+
+terraform:
+  version: 0.12.6
