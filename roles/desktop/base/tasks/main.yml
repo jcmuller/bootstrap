@@ -207,7 +207,7 @@
 - name: Install base16-tomorrow-night
   tags: [base16-tomorrow-night, zsh]
   get_url:
-    url:  https://raw.githubusercontent.com/chriskempson/base16-shell/master/scripts/base16-tomorrow-night.sh
+    url: https://raw.githubusercontent.com/chriskempson/base16-shell/master/scripts/base16-tomorrow-night.sh
     dest: /usr/local/bin
     owner: root
     group: root
@@ -216,7 +216,7 @@
 - name: Install base16-tomorrow
   tags: [base16-tomorrow, zsh]
   get_url:
-    url:  https://raw.githubusercontent.com/chriskempson/base16-shell/master/scripts/base16-tomorrow.sh
+    url: https://raw.githubusercontent.com/chriskempson/base16-shell/master/scripts/base16-tomorrow.sh
     dest: /usr/local/bin
     owner: root
     group: root
