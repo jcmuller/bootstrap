@@ -221,3 +221,10 @@
     owner: root
     group: root
     mode: 0755
+
+- name: Install ngrok
+  tags: [ngrok]
+  unarchive:
+    src: https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+    dest: /usr/local/bin
+    remote_src: true
