@@ -1,3 +1,4 @@
+# vim: set foldmethod=marker nospell:
 ---
 - name: Install packages
   tags: [packages, core]
