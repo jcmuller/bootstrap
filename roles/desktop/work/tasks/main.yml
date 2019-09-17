@@ -1,3 +1,5 @@
+# vim: set foldmethod=marker nospell:
+---
 - name: Install kubectl
   tags: [kubectl, k8s]
   get_url:
