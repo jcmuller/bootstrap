@@ -28,4 +28,4 @@ helm:
   version: v2.14.3
 
 terraform:
-  version: 0.12.6
+  version: 0.12.7
