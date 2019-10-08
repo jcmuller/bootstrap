@@ -93,7 +93,7 @@
 - name: Install pack
   tags: pack
   unarchive:
-    src: https://github.com/buildpack/pack/releases/download/v0.3.0/pack-v0.3.0-linux.tgz
+    src: https://github.com/buildpack/pack/releases/download/{{ pack.version }}/pack-{{ pack.version }}-linux.tgz
     dest: /usr/local/bin
     remote_src: yes
 
