@@ -32,3 +32,6 @@ terraform:
 
 op:
   version: v0.6.2
+
+jq:
+  version: "1.6"

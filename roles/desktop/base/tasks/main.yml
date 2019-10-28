@@ -21,7 +21,6 @@
       - gnutls-bin
       - graphviz
       - htop
-      - jq
       - laptop-mode-tools
       - ldap-utils
       - libtool-bin # neovim

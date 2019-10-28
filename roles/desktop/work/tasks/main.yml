@@ -134,3 +134,19 @@
     owner: root
     group: root
     mode: 0755
+
+- name: Install jq
+  tags: jq
+  get_url:
+    url: https://github.com/stedolan/jq/releases/download/jq-{{jq.version}}/jq-linux64
+    dest: /usr/local/bin
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Link jq
+  tags: jq
+  file:
+    src: /usr/local/bin/jq-linux64
+    dest: /usr/local/bin/jq
+    state: link
