@@ -229,3 +229,9 @@
   shell: helm plugin install {{ item.source }} --version {{ item.version }}
   with_items: "{{ helm.plugins }}"
 # }}}
+- name: Install goobook # {{{
+  tags: [mutt, goobook]
+  pip:
+    name: goobook
+    executable: pip3
+# }}}
