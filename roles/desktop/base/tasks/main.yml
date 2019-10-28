@@ -29,6 +29,7 @@
       - libssl-dev # required for older version of ruby
       - libreadline-dev
       - moreutils
+      - neomutt
       - openssh-server
       - openvpn
       - pass
