@@ -20,3 +20,6 @@ slackcat:
 
 z:
   version: v1.11
+
+hadolint:
+  version: v1.17.2

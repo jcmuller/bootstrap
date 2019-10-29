@@ -228,3 +228,12 @@
     src: https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
     dest: /usr/local/bin
     remote_src: true
+
+- name: Install hadolint
+  tags: [hadolint]
+  get_url:
+    url: https://github.com/hadolint/hadolint/releases/download/{{hadolint.version}}/hadolint-Linux-x86_64
+    dest: /usr/local/bin
+    owner: root
+    group: root
+    mode: 0755
