@@ -8,6 +8,7 @@
     owner: root
     group: root
     mode: 0755
+    force: true
 
 - name: Install minikube
   tags: [minikube, k8s]
@@ -17,6 +18,7 @@
     owner: root
     group: root
     mode: 0755
+    force: true
 
 # Helm {{{
 - name: Set helm url
@@ -66,6 +68,7 @@
     owner: root
     group: root
     mode: 0755
+    force: true
 
 - name: Install argo
   tags: argo
@@ -75,6 +78,7 @@
     owner: root
     group: root
     mode: 0755
+    force: true
 
 - name: Install aws-vault
   tags: [aws]
@@ -84,6 +88,7 @@
     owner: root
     group: root
     mode: 0755
+    force: true
 
 - name: Install vagrant
   tags: [vagrant]
@@ -139,14 +144,8 @@
   tags: jq
   get_url:
     url: https://github.com/stedolan/jq/releases/download/jq-{{jq.version}}/jq-linux64
-    dest: /usr/local/bin
+    dest: /usr/local/bin/jq
     owner: root
     group: root
     mode: 0755
-
-- name: Link jq
-  tags: jq
-  file:
-    src: /usr/local/bin/jq-linux64
-    dest: /usr/local/bin/jq
-    state: link
+    force: true

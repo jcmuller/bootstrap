@@ -64,6 +64,7 @@
     url: https://www.dropbox.com/download?dl=packages/dropbox.py
     dest: ~/bin/dropbox
     mode: 0755
+    force: true
 # }}}
 # Install Ruby {{{
 - name: Install rbenv
