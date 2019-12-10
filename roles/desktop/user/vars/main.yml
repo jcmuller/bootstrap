@@ -35,3 +35,6 @@ helm:
   plugins:
     - source: https://github.com/databus23/helm-diff
       version: "v2.11.0+5"
+
+asdf:
+  version: v0.7.5
