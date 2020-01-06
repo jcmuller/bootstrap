@@ -28,7 +28,7 @@ helm:
   version: v2.15.0
 
 terraform:
-  version: 0.12.12
+  version: 0.12.17
 
 op:
   version: v0.6.2
