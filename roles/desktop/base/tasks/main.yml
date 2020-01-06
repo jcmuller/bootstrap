@@ -237,3 +237,12 @@
     owner: root
     group: root
     mode: 0755
+
+- name: Install nextcloud
+  tags: [nextcloud]
+  get_url:
+    url: https://download.nextcloud.com/desktop/releases/Linux/Nextcloud-{{nextcloud.version}}-x86_64.AppImage
+    dest: /usr/local/bin/nextcloud
+    owner: root
+    group: root
+    mode: 0755
