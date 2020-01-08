@@ -24,7 +24,7 @@
 - name: Set helm url
   tags: [k8s, helm]
   set_fact:
-    helm_url: "https://storage.googleapis.com/kubernetes-helm/helm-{{ helm.version }}-linux-amd64.tar.gz"
+    helm_url: "https://get.helm.sh/helm-{{ helm.version }}-linux-amd64.tar.gz"
 
 - name: Create helm install dir
   tags: [k8s, helm]
