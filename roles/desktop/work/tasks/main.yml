@@ -1,5 +1,19 @@
 # vim: set foldmethod=marker nospell:
 ---
+- name: Install Greenhouse root CA
+  tags: [ca]
+  get_url:
+    url: https://s3.amazonaws.com/grnhse-vpc-assets/certs/greenhouse-root-ca.pem
+    dest: /usr/local/share/ca-certificates/greenhouse-root-ca.crt
+    owner: root
+    group: root
+    mode: 0644
+    force: true
+
+- name: Update CA Certificates
+  tags: [ca]
+  command: update-ca-certificates
+
 - name: Install kubectl
   tags: [kubectl, k8s]
   get_url:
