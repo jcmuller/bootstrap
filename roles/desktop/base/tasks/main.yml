@@ -246,3 +246,24 @@
     owner: root
     group: root
     mode: 0755
+
+- name: Install kvm
+  tags: [kvm]
+  apt:
+    state: present
+    update_cache: true
+    name:
+      - bridge-utils
+      - libvirt-clients
+      - libvirt-daemon-system
+      - qemu-kvm
+      - virt-manager
+
+- name: "Install kvm: add user to group"
+  tags: [kvm]
+  user:
+    name: "{{ user.name }}"
+    groups:
+      - libvirt
+      - libvirt-qemu
+      - libvirt-dnsmasq
