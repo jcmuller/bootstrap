@@ -10,11 +10,11 @@
       - ca-certificates
       - cmake
       - curl
-      - default-jre
+      # - default-jre
       - dunst
-      - duplicity
-      - emacs
-      - gconf2
+      # - duplicity
+      # - emacs
+      # - gconf2
       - gettext # neovim
       - git
       - gnupg2
@@ -54,8 +54,8 @@
       - tmux
       - tree
       - traceroute
-      - virtualbox
-      - virtualenvwrapper
+      # - virtualbox
+      # - virtualenvwrapper
       - xclip
       - zsh
     state: latest
