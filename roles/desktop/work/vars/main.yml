@@ -35,3 +35,6 @@ op:
 
 jq:
   version: "1.6"
+
+teleport:
+  version: v4.2.1

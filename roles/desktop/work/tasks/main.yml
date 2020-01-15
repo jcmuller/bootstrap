@@ -149,3 +149,35 @@
     group: root
     mode: 0755
     force: true
+
+# {{{ Install teleport
+- name: Create teleport install dir
+  tags: [k8s, teleport]
+  file: path=/tmp/teleport state=directory
+
+- name: Install teleport
+  tags: [k8s, teleport]
+  unarchive:
+    src: https://get.gravitational.com/teleport-{{teleport.version}}-linux-amd64-bin.tar.gz
+    dest: /tmp/
+    remote_src: true
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install teleport
+  tags: [k8s, teleport]
+  copy:
+    src: /tmp/teleport/tsh
+    remote_src: true
+    dest: /usr/local/bin/tsh
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Remove teleport installation files
+  tags: [k8s, teleport]
+  file:
+    path: /tmp/teleport
+    state: absent
+# }}}
