@@ -47,7 +47,7 @@
   tags: [k8s, helm]
   copy:
     src: /tmp/helm/helm
-    remote_src: yes
+    remote_src: true
     dest: /usr/local/bin/helm
     owner: root
     group: root
@@ -100,7 +100,7 @@
   unarchive:
     src: https://github.com/buildpack/pack/releases/download/{{ pack.version }}/pack-{{ pack.version }}-linux.tgz
     dest: /usr/local/bin
-    remote_src: yes
+    remote_src: true
 
 - name: Install bats
   tags: bats
@@ -116,7 +116,7 @@
   unarchive:
     src: "https://releases.hashicorp.com/terraform/{{terraform.version}}/terraform_{{terraform.version}}_linux_amd64.zip"
     dest: /usr/local/bin
-    remote_src: yes
+    remote_src: true
     owner: root
     group: root
     mode: 0755
@@ -135,7 +135,7 @@
   unarchive:
     src: https://cache.agilebits.com/dist/1P/op/pkg/{{op.version}}/op_linux_amd64_{{op.version}}.zip
     dest: /usr/local/bin
-    remote_src: yes
+    remote_src: true
     owner: root
     group: root
     mode: 0755
