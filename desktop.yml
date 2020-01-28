@@ -83,6 +83,7 @@
 
   post_tasks:
     - name: Add {{ user.name }} to docker group
+      tags: docker
       user:
         name: "{{ user.name }}"
         groups: docker
