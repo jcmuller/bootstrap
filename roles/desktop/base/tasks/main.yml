@@ -149,7 +149,7 @@
   apt_repository:
     repo: deb http://packages.cloud.google.com/apt cloud-sdk-{{ ubuntu.release }} main
     state: present
-    update_cache: yes
+    update_cache: true
 
 - name: Install gcloud
   tags: [packages, gcloud]
