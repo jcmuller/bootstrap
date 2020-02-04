@@ -207,3 +207,33 @@
     group: root
     mode: 0755
 # }}}
+
+# Install duoconnect {{{
+- name: Create install dir
+  tags: [duoconnect]
+  file: path=/tmp/duoconnect state=directory
+
+- name: Install duoconnect
+  tags: [duoconnect]
+  unarchive:
+    src: https://dl.duosecurity.com/DuoConnect-latest.tar.gz
+    dest: /tmp/duoconnect/
+    remote_src: true
+    owner: root
+    group: root
+
+- name: Install duoconnect
+  tags: [duoconnect]
+  copy:
+    src: /tmp/duoconnect/duoconnect
+    dest: /usr/local/bin/
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Remove duoconnect installation files
+  tags: [duoconnect]
+  file:
+    path: /tmp/duoconnect
+    state: absent
+# }}}
