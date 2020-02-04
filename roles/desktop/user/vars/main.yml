@@ -25,6 +25,7 @@ golang:
     - github.com/sclevine/yj
     - golang.org/x/lint/golint
     - golang.org/x/tools/cmd/goimports
+    - golang.org/x/tools/gopls
     - golang.org/x/tools/cmd/gopls
     - golang.org/x/tools/cmd/guru
     - golang.org/x/tools/internal/lsp
