@@ -183,7 +183,6 @@
   tags: [k8s, teleport]
   copy:
     src: /tmp/teleport/tsh
-    remote_src: true
     dest: /usr/local/bin/tsh
     owner: root
     group: root
