@@ -267,3 +267,24 @@
       - libvirt
       - libvirt-qemu
       - libvirt-dnsmasq
+
+- name: Install gh # {{{
+  tags: [github]
+  unarchive:
+    src: https://github.com/cli/cli/releases/download/v{{ github.version }}/gh_{{ github.version }}_linux_amd64.tar.gz
+    dest: /tmp/
+    remote_src: true
+
+- tags: [github]
+  copy:
+    src: /tmp/gh_{{ github.version }}_linux_amd64/bin/gh
+    dest: /usr/local/bin
+    owner: root
+    group: root
+    mode: 0755
+
+- tags: [github]
+  file:
+    path: /tmp/gh_{{ github.version }}_linux_amd64
+    state: absent
+# }}}

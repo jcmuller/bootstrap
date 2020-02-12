@@ -26,3 +26,6 @@ hadolint:
 
 nextcloud:
   version: 2.6.2
+
+github:
+  version: 0.5.4
