@@ -196,7 +196,7 @@
     deb: https://github.com/BurntSushi/ripgrep/releases/download/{{ ripgrep.version }}/ripgrep_{{ ripgrep.version }}_amd64.deb
 
 - name: Install z
-  tags: [z. zsh]
+  tags: [z, zsh]
   get_url:
     url: "https://raw.githubusercontent.com/rupa/z/{{ z.version }}/z.sh"
     dest: /usr/local/bin
