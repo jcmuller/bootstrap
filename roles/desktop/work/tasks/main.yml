@@ -128,7 +128,7 @@
 - name: Install terraform cli
   tags: [terraform]
   unarchive:
-    src: "https://releases.hashicorp.com/terraform/{{terraform.version}}/terraform_{{terraform.version}}_linux_amd64.zip"
+    src: "https://releases.hashicorp.com/terraform/{{ terraform.version }}/terraform_{{ terraform.version }}_linux_amd64.zip"
     dest: /usr/local/bin
     remote_src: true
     owner: root
@@ -147,7 +147,7 @@
 - name: Install 1password cli
   tags: [1password]
   unarchive:
-    src: https://cache.agilebits.com/dist/1P/op/pkg/{{op.version}}/op_linux_amd64_{{op.version}}.zip
+    src: https://cache.agilebits.com/dist/1P/op/pkg/{{ op.version }}/op_linux_amd64_{{ op.version }}.zip
     dest: /usr/local/bin
     remote_src: true
     owner: root
@@ -157,7 +157,7 @@
 - name: Install jq
   tags: jq
   get_url:
-    url: https://github.com/stedolan/jq/releases/download/jq-{{jq.version}}/jq-linux64
+    url: https://github.com/stedolan/jq/releases/download/jq-{{ jq.version }}/jq-linux64
     dest: /usr/local/bin/jq
     owner: root
     group: root
@@ -172,7 +172,7 @@
 - name: Install teleport
   tags: [k8s, teleport]
   unarchive:
-    src: https://get.gravitational.com/teleport-{{teleport.version}}-linux-amd64-bin.tar.gz
+    src: https://get.gravitational.com/teleport-{{ teleport.version }}-linux-amd64-bin.tar.gz
     dest: /tmp/
     remote_src: true
     owner: root
