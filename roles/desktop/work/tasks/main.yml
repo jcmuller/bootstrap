@@ -164,6 +164,16 @@
     mode: 0755
     force: true
 
+- name: Install yq
+  tags: yq
+  get_url:
+    url: https://github.com/mikefarah/yq/releases/download/{{ yq.version }}/yq_linux_amd64
+    dest: /usr/local/bin/yq
+    owner: root
+    group: root
+    mode: 0755
+    force: true
+
 # {{{ Install teleport
 - name: Create teleport install dir
   tags: [k8s, teleport]
