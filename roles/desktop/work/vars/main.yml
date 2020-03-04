@@ -44,3 +44,6 @@ jsonnet:
 
 yq:
   version: 3.1.2
+
+plantuml:
+  version: 1.2020.2
