@@ -25,7 +25,7 @@ hadolint:
   version: v1.17.2
 
 nextcloud:
-  version: 2.6.2
+  version: 2.6.4
 
 github:
   version: 0.6.1
