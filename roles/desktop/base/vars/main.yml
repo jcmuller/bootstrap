@@ -28,4 +28,4 @@ nextcloud:
   version: 2.6.4
 
 github:
-  version: 0.6.1
+  version: 0.6.2
