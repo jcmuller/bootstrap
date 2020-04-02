@@ -224,15 +224,6 @@
     dest: /usr/local/bin
     remote_src: true
 
-- name: Install hadolint
-  tags: [hadolint]
-  get_url:
-    url: https://github.com/hadolint/hadolint/releases/download/{{hadolint.version}}/hadolint-Linux-x86_64
-    dest: /usr/local/bin/hadolint
-    owner: root
-    group: root
-    mode: 0755
-
 - name: Install nextcloud
   tags: [nextcloud]
   get_url:
