@@ -14,16 +14,6 @@
   tags: [ca]
   command: update-ca-certificates
 
-- name: Install kubectl
-  tags: [kubectl, k8s]
-  get_url:
-    url: https://storage.googleapis.com/kubernetes-release/release/{{ kubectl.version }}/bin/linux/amd64/kubectl
-    dest: /usr/local/bin
-    owner: root
-    group: root
-    mode: 0755
-    force: true
-
 - name: Install minikube
   tags: [minikube, k8s]
   get_url:

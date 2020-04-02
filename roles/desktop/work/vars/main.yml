@@ -3,9 +3,6 @@
 aws_vault:
   version: 4.6.2
 
-kubectl:
-  version: v1.15.2
-
 pack:
   version: v0.4.1
 
