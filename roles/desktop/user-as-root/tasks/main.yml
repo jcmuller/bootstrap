@@ -85,3 +85,13 @@
     path: /tmp/gopass
     state: absent
 # }}}
+- name: Install version_manager_shell_string # {{{
+  tags: [version_manager_shell_string]
+  become: true
+  become_user: root
+  get_url:
+    url: https://github.com/jcmuller/version_manager_shell_string/releases/download/{{ version_manager_shell_string.version }}/version_manager_shell_string-linux
+    dest: /usr/local/bin/version_manager_shell_string
+    mode: 0755
+    force: true
+# }}}
