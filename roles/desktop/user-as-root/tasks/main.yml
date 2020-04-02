@@ -1,17 +1,5 @@
 ---
 # vim: set foldmethod=marker nospell:
-- name: Ensure summon lib directory exists
-  file:
-    dest: /usr/local/lib/summon
-    state: directory
-    mode: 0755
-- name: Add gopass for summon
-  tags: [golang, goenv, gopass]
-  become: true
-  copy:
-    src: gopasspwd
-    dest: /usr/local/lib/summon/gopass
-    mode: 0755
 - name: Ensure zsh is installed
   tags: [zsh]
   apt:
@@ -37,6 +25,16 @@
     dest: /etc/logrotate.d/
     mode: 0644
 
+- name: Install version_manager_shell_string # {{{
+  tags: [version_manager_shell_string]
+  become: true
+  become_user: root
+  get_url:
+    url: https://github.com/jcmuller/version_manager_shell_string/releases/download/{{ version_manager_shell_string.version }}/version_manager_shell_string-linux
+    dest: /usr/local/bin/version_manager_shell_string
+    mode: 0755
+    force: true
+# }}}
 # Install gopass {{{
 - name: Set gopass url
   tags: [gopass]
@@ -85,13 +83,23 @@
     path: /tmp/gopass
     state: absent
 # }}}
-- name: Install version_manager_shell_string # {{{
-  tags: [version_manager_shell_string]
-  become: true
-  become_user: root
-  get_url:
-    url: https://github.com/jcmuller/version_manager_shell_string/releases/download/{{ version_manager_shell_string.version }}/version_manager_shell_string-linux
-    dest: /usr/local/bin/version_manager_shell_string
+- name: Install summon # {{{
+  tags: summon
+  unarchive:
+    src: https://github.com/cyberark/summon/releases/download/{{ summon.version }}/summon-linux-amd64.tar.gz
+    dest: /usr/local/bin
+    remote_src: true
+- name: Ensure summon lib directory exists
+  tags: summon
+  file:
+    dest: /usr/local/lib/summon
+    state: directory
     mode: 0755
-    force: true
+- name: Add gopass for summon
+  tags: summon
+  become: true
+  copy:
+    src: gopasspwd
+    dest: /usr/local/lib/summon/gopass
+    mode: 0755
 # }}}
