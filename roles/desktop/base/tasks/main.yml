@@ -4,8 +4,10 @@
   tags: [packages, core]
   apt:
     name:
+      - abook
       - apt-transport-https
       - awscli
+      - bat
       - build-essential
       - ca-certificates
       - cmake
@@ -70,11 +72,13 @@
   apt:
     name:
       - arandr
+      - copyq
       - gimp
       - firefox
       - i3
       - i3lock-fancy
       - maim
+      - qutebrowser # This is to get the prereqs
       - xfonts-terminus
     state: latest
 
