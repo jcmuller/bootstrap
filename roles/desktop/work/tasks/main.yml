@@ -106,15 +106,6 @@
     dest: /usr/local/bin
     remote_src: true
 
-- name: Install bats
-  tags: bats
-  get_url:
-    url: "https://raw.githubusercontent.com/bats-core/bats-core/{{ bats.version }}/bin/bats"
-    dest: /usr/local/bin/
-    owner: root
-    group: root
-    mode: 0755
-
 - name: Install terraform cli
   tags: [terraform]
   unarchive:
