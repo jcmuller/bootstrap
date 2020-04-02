@@ -6,3 +6,38 @@ helm:
 
 asdf:
   version: v0.7.7
+  plugins:
+    - name: argo
+      version: 2.4.3
+    - name: github-cli
+      version: 0.6.4
+    - name: golang
+      version: 1.14.1
+    - name: hadolint
+      version: v1.17.5
+    - name: helm
+      version: 2.16.1
+    - name: jsonnet
+      version: 0.15.0
+    - name: kind
+      version: 0.7.0
+    - name: kubectl
+      version: 1.15.2
+    - name: minikube
+      version: 1.6.2
+    - name: nodejs
+      version: 10.16.3
+    - name: python
+      version: 3.7.6
+    - name: ripgrep
+      version: 12.0.1
+    - name: ruby
+      version: 2.6.5
+    - name: shfmt
+      version: 3.0.2
+    - name: stern
+      version: 1.11.0
+    - name: tanka
+      version: 0.8.0
+    - name: terraform
+      version: 0.12.17

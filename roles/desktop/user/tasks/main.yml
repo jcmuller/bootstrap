@@ -86,6 +86,18 @@
     repo: https://github.com/asdf-vm/asdf.git
     dest: ~/.asdf
     version: "{{ asdf.version }}"
+
+- name: Install asdf plugins
+  tags: [asdf, asdf-plugins]
+  shell: |
+    . ~/.asdf/asdf.sh
+    asdf plugin add {{ item.name }}
+    asdf install {{ item.name }} {{ item.version }}
+    asdf global {{ item.name }} {{ item.version }}
+  args:
+    executable: /bin/bash
+    creates: "~/.asdf/plugins/{{ item.name }}"
+  with_items: "{{asdf.plugins}}"
 #}}}
 # Helm plugins {{{
 - name: Install helm plugins
