@@ -1,4 +1,7 @@
 ---
+browserpassnative:
+  version: 3.0.6
+
 gopass:
   version: 1.8.6
 
