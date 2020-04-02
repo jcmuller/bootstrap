@@ -84,16 +84,6 @@
     mode: 0755
     force: true
 
-- name: Install argo
-  tags: argo
-  get_url:
-    url: "https://github.com/argoproj/argo/releases/download/{{ argo.version }}/argo-linux-amd64"
-    dest: /usr/local/bin/argo
-    owner: root
-    group: root
-    mode: 0755
-    force: true
-
 - name: Install aws-vault
   tags: [aws]
   get_url:
