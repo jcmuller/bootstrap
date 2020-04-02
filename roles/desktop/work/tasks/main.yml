@@ -14,16 +14,6 @@
   tags: [ca]
   command: update-ca-certificates
 
-- name: Install minikube
-  tags: [minikube, k8s]
-  get_url:
-    url: https://github.com/kubernetes/minikube/releases/download/{{ minikube.version }}/minikube-linux-amd64
-    dest: /usr/local/bin/minikube
-    owner: root
-    group: root
-    mode: 0755
-    force: true
-
 # Helm {{{
 - name: Set helm url
   tags: [k8s, helm]

@@ -9,9 +9,6 @@ pack:
 vagrant:
   version: 2.2.4
 
-minikube:
-  version: v1.6.2
-
 helm:
   version: v2.16.1
 
