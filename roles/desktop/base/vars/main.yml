@@ -10,7 +10,7 @@ docker_machine:
   version: 0.16.0
 
 slack:
-  version: 4.0.1
+  version: 4.4.0
 
 slackcat:
   version: "1.6"
