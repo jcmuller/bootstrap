@@ -37,7 +37,7 @@
     dest: /etc/logrotate.d/
     mode: 0644
 
-# Gopass {{{
+# Install gopass {{{
 - name: Set gopass url
   tags: [gopass]
   set_fact:
