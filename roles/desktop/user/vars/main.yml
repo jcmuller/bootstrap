@@ -1,28 +1,4 @@
 ---
-golang:
-  version: 1.12.1
-  packages:
-    - github.com/browserpass/browserpass-native
-    - github.com/cyberark/summon/cmd
-    - github.com/git-duet/git-duet
-    - github.com/github/hub
-    - github.com/go-delve/delve/cmd/dlv
-    - github.com/gopasspw/gopass
-    - github.com/jcmuller/version_manager_shell_string/cmd/version_manager_shell_string
-    - github.com/jinzhu/grb
-    - github.com/jstemmer/gotags
-    - github.com/junegunn/fzf
-    - github.com/mrtazz/checkmake/cmd/checkmake
-    - github.com/sclevine/yj
-    - golang.org/x/lint/golint
-    - golang.org/x/tools/cmd/goimports
-    - golang.org/x/tools/gopls
-    - golang.org/x/tools/cmd/gopls
-    - golang.org/x/tools/cmd/guru
-    - golang.org/x/tools/internal/lsp
-    - gopkg.in/Netflix-Skunkworks/go-jira.v1/
-    - mvdan.cc/sh/cmd/shfmt
-
 helm:
   plugins:
     - source: https://github.com/databus23/helm-diff

@@ -66,53 +66,12 @@
     mode: 0755
     force: true
 # }}}
-# Install Golang {{{
-- name: Install goenv
-  tags: [golang, goenv]
-  git:
-    repo: https://github.com/syndbg/goenv.git
-    dest: ~/.goenv
-- name: Install goenv-update
-  tags: [golang, goenv]
-  git:
-    repo: https://github.com/jcmuller/goenv-update.git
-    dest: ~/.goenv/plugins/goenv-update
-- name: "Install go {{ golang.version }}"
-  tags: [golang, goenv]
-  command: "~/.goenv/bin/goenv install {{ golang.version }}"
-  args:
-    creates: "~/.goenv/versions/{{ golang.version }}"
-- name: Create directory ~/bin
-  tags: [golang, goenv]
-  file:
-    path: ~/bin
-    state: directory
-- name: Install go packages
-  tags: [golang, goenv, go-packages]
-  shell: "~/.goenv/versions/{{ golang.version }}/bin/go get -u {{ item }}"
-  with_items: "{{ golang.packages }}"
-- name: link cmd to summon
-  tags: [golang, goenv]
-  file:
-    src: ~/go/bin/cmd
-    dest: ~/bin/summon
-    state: link
-- name: Define go version
-  tags: [golang, goenv]
-  command: "~/.goenv/bin/goenv global {{ golang.version }}"
-  args:
-    creates: ~/.goenv/version
-- name: Rehash go binaries
-  tags: [golang, goenv]
-  command: ~/.goenv/bin/goenv rehash
-# }}}
 # Install browserpass-native {{{
 - name: Build browserpass-native
   tags: [browserpass]
   make:
     target: configure
     chdir: ~/go/src/github.com/browserpass/browserpass-native
-# }}}
 # }}}
 - name: Install goobook # {{{
   tags: [mutt, goobook]

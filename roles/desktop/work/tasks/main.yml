@@ -106,7 +106,6 @@
     path: /tmp/teleport
     state: absent
 # }}}
-
 # Install duoconnect {{{
 - name: Create install dir
   tags: [duoconnect]
@@ -136,7 +135,6 @@
     path: /tmp/duoconnect
     state: absent
 # }}}
-
 # Install plantuml {{{
 - name: Ensure directory exists
   tags: [plantuml]
