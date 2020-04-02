@@ -164,3 +164,42 @@
     mode: 0755
     force: true
 # }}}
+# Install dive {{{
+- name: Set dive url
+  tags: [dive]
+  set_fact:
+    dive_url: https://github.com/wagoodman/dive/releases/download/v{{ dive.version }}/dive_{{ dive.version }}_linux_amd64.tar.gz
+
+- name: Create dive install dir
+  tags: [dive]
+  file: path=/tmp/dive state=directory
+
+- name: Download dive
+  tags: [dive]
+  get_url:
+    url: "{{ dive_url }}"
+    dest: /tmp/dive
+
+- name: Unpack dive
+  tags: [dive]
+  shell: |
+    tar -zxpf *.tar.gz
+  args:
+    chdir: /tmp/dive
+
+- name: Install dive
+  tags: [dive]
+  copy:
+    src: /tmp/dive/dive
+    remote_src: true
+    dest: /usr/local/bin/dive
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Remove dive installation files
+  tags: [dive]
+  file:
+    path: /tmp/dive
+    state: absent
+# }}}
