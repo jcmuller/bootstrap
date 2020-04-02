@@ -97,6 +97,12 @@
     deb: "https://downloads.slack-edge.com/linux_releases/slack-desktop-{{ slack.version }}-amd64.deb"
     state: present
 
+- name: Install zoom client
+  tags: [packages, desktop, zoom]
+  apt:
+    deb: https://zoom.us/client/latest/zoom_amd64.deb
+    state: present
+
 - name: Install spotify
   tags: [packages, desktop, spotify]
   command: sudo snap install spotify
