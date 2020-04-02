@@ -9,9 +9,6 @@ pack:
 vagrant:
   version: 2.2.4
 
-terraform:
-  version: 0.12.17
-
 op:
   version: v0.6.2
 

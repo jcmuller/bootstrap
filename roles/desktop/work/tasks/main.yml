@@ -36,25 +36,6 @@
     dest: /usr/local/bin
     remote_src: true
 
-- name: Install terraform cli
-  tags: [terraform]
-  unarchive:
-    src: "https://releases.hashicorp.com/terraform/{{ terraform.version }}/terraform_{{ terraform.version }}_linux_amd64.zip"
-    dest: /usr/local/bin
-    remote_src: true
-    owner: root
-    group: root
-    mode: 0755
-
-- name: Symlink terraform
-  tags: [terraform]
-  file:
-    src: /usr/local/bin/terraform
-    dest: /usr/local/bin/tf
-    owner: root
-    group: root
-    state: link
-
 - name: Install 1password cli
   tags: [1password]
   unarchive:
