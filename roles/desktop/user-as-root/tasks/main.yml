@@ -34,3 +34,52 @@
     src: xsession-errors
     dest: /etc/logrotate.d/
     mode: 0644
+
+# Gopass {{{
+- name: Set gopass url
+  tags: [gopass]
+  set_fact:
+    gopass_url: https://github.com/gopasspw/gopass/releases/download/v{{ gopass.version }}/gopass-{{ gopass.version }}-linux-amd64.tar.gz
+
+- name: Create gopass install dir
+  tags: [gopass]
+  file: path=/tmp/gopass state=directory
+
+- name: Download gopass
+  tags: [gopass]
+  get_url:
+    url: "{{ gopass_url }}"
+    dest: /tmp/gopass
+
+- name: Unpack gopass
+  tags: [gopass]
+  shell: |
+    tar --strip-components=1 -zxpf *.tar.gz
+  args:
+    chdir: /tmp/gopass
+
+- name: Install gopass
+  tags: [gopass]
+  copy:
+    src: /tmp/gopass/gopass
+    remote_src: true
+    dest: /usr/local/bin/gopass
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install gopass completion
+  tags: [gopass]
+  copy:
+    src: /tmp/gopass/zsh.completion
+    remote_src: true
+    dest: /usr/local/share/zsh/site-functions/_gopass
+    owner: root
+    group: root
+
+- name: Remove gopass installation files
+  tags: [gopass]
+  file:
+    path: /tmp/gopass
+    state: absent
+# }}}
