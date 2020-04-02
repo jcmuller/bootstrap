@@ -1,10 +1,4 @@
 ---
-node:
-  version: 11.13.0
-  packages:
-    - bash-language-server
-    - livedown
-
 golang:
   version: 1.12.1
   packages:

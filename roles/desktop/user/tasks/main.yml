@@ -66,54 +66,6 @@
     mode: 0755
     force: true
 # }}}
-# Install Node {{{
-- name: Install nodenv
-  tags: [node, javascript, nodenv]
-  git:
-    repo: https://github.com/nodenv/nodenv.git
-    dest: ~/.nodenv
-- name: Ensure nodenv plugins directory exists
-  tags: [node, javascript, nodenv]
-  file:
-    path: ~/.nodenv/plugins
-    state: directory
-- name: Install ruby-build
-  tags: [node, javascript, nodenv]
-  git:
-    repo: https://github.com/nodenv/node-build.git
-    dest: ~/.nodenv/plugins/nodenv-build
-- name: Install nodenv-update
-  tags: [node, javascript, nodenv]
-  git:
-    repo: https://github.com/nodenv/nodenv-update.git
-    dest: ~/.nodenv/plugins/nodenv-update
-- name: Install nodenv-vars
-  tags: [node, javascript, nodenv]
-  git:
-    repo: https://github.com/nodenv/nodenv-vars.git
-    dest: ~/.nodenv/plugins/nodenv-vars
-- name: "Install node {{ node.version }}"
-  tags: [node, javascript, nodenv]
-  command: "~/.nodenv/bin/nodenv install {{ node.version }}"
-  args:
-    creates: "~/.nodenv/versions/{{ node.version }}"
-- name: Define node version
-  tags: [node, javascript, nodenv]
-  command: "~/.nodenv/bin/nodenv global {{ node.version }}"
-  args:
-    creates: ~/.nodenv/version
-- name: Rehash node binaries
-  tags: [node, javascript, nodenv]
-  command: ~/.nodenv/bin/nodenv rehash
-- name: Install npm packages
-  tags: [node, javascript, js-packages]
-  npm:
-    name: "{{ item }}"
-    executable: "~/.nodenv/versions/{{ node.version }}/bin/npm"
-    global: true
-    state: present
-  with_items: "{{ node.packages }}"
-# }}}
 # Install Golang {{{
 - name: Install goenv
   tags: [golang, goenv]
