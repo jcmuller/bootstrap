@@ -6,9 +6,6 @@ aws_vault:
 pack:
   version: v0.4.1
 
-vagrant:
-  version: 2.2.4
-
 op:
   version: v0.6.2
 

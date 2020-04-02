@@ -24,11 +24,6 @@
     mode: 0755
     force: true
 
-- name: Install vagrant
-  tags: [vagrant]
-  apt:
-    deb: https://releases.hashicorp.com/vagrant/{{ vagrant.version }}/vagrant_{{ vagrant.version }}_x86_64.deb
-
 - name: Install pack
   tags: pack
   unarchive:
