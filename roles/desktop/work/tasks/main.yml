@@ -14,46 +14,6 @@
   tags: [ca]
   command: update-ca-certificates
 
-# Helm {{{
-- name: Set helm url
-  tags: [k8s, helm]
-  set_fact:
-    helm_url: "https://get.helm.sh/helm-{{ helm.version }}-linux-amd64.tar.gz"
-
-- name: Create helm install dir
-  tags: [k8s, helm]
-  file: path=/tmp/helm state=directory
-
-- name: Download helm
-  tags: [k8s, helm]
-  get_url:
-    url: "{{ helm_url }}"
-    dest: /tmp/helm
-
-- name: Unpack helm
-  tags: [k8s, helm]
-  shell: |
-    tar --strip-components=1 -zxpf *.tar.gz
-  args:
-    chdir: /tmp/helm
-
-- name: Install helm
-  tags: [k8s, helm]
-  copy:
-    src: /tmp/helm/helm
-    remote_src: true
-    dest: /usr/local/bin/helm
-    owner: root
-    group: root
-    mode: 0755
-
-- name: Remove helm installation files
-  tags: [k8s, helm]
-  file:
-    path: /tmp/helm
-    state: absent
-# }}}
-
 - name: Install aws-vault
   tags: [aws]
   get_url:
