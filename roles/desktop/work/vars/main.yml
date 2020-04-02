@@ -26,3 +26,6 @@ plantuml:
 
 gojira:
   version: v1.0.23
+
+yj:
+  version: v4.0.0
