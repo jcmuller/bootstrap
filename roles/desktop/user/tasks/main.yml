@@ -66,57 +66,6 @@
     mode: 0755
     force: true
 # }}}
-# Install Ruby {{{
-- name: Install rbenv
-  tags: [ruby, rbenv]
-  git:
-    repo: https://github.com/rbenv/rbenv.git
-    dest: ~/.rbenv
-- name: Ensure rbenv plugins directory exists
-  tags: [ruby, rbenv]
-  file:
-    path: ~/.rbenv/plugins
-    state: directory
-- name: Install ruby-build
-  tags: [ruby, rbenv]
-  git:
-    repo: https://github.com/rbenv/ruby-build.git
-    dest: ~/.rbenv/plugins/ruby-build
-- name: Install rbenv-update
-  tags: [ruby, rbenv]
-  git:
-    repo: https://github.com/rkh/rbenv-update.git
-    dest: ~/.rbenv/plugins/rbenv-update
-- name: Install rbenv-vars
-  tags: [ruby, rbenv]
-  git:
-    repo: https://github.com/rbenv/rbenv-vars.git
-    dest: ~/.rbenv/plugins/rbenv-vars
-- name: Install rbenv-default-gems
-  tags: [ruby, rbenv]
-  git:
-    repo: https://github.com/rbenv/rbenv-default-gems.git
-    dest: ~/.rbenv/plugins/rbenv-default-gems
-- name: Configure rbenv-default-gems
-  tags: [ruby, rbenv, default-gems]
-  copy:
-    src: default-gems
-    dest: ~/.rbenv/
-    mode: 0755
-- name: "Install ruby {{ ruby.version }}"
-  tags: [ruby, rbenv]
-  command: "~/.rbenv/bin/rbenv install {{ ruby.version }}"
-  args:
-    creates: "~/.rbenv/versions/{{ ruby.version }}"
-- name: Define ruby version
-  tags: [ruby, rbenv]
-  command: "~/.rbenv/bin/rbenv global {{ ruby.version }}"
-  args:
-    creates: ~/.rbenv/version
-- name: Rehash ruby binaries
-  tags: [ruby, rbenv]
-  command: ~/.rbenv/bin/rbenv rehash
-# }}}
 # Install Node {{{
 - name: Install nodenv
   tags: [node, javascript, nodenv]
