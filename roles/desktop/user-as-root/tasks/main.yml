@@ -1,3 +1,5 @@
+---
+# vim: set foldmethod=marker nospell:
 - name: Ensure summon lib directory exists
   file:
     dest: /usr/local/lib/summon
