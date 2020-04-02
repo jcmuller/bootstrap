@@ -151,3 +151,13 @@
     group: root
     mode: 0755
 # }}}
+- name: Install go-jira # {{{
+  tags: [jira]
+  become: true
+  become_user: root
+  get_url:
+    url: https://github.com/go-jira/jira/releases/download/{{ gojira.version }}/jira-linux-amd64
+    dest: /usr/local/bin/jira
+    mode: 0755
+    force: true
+# }}}
