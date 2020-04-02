@@ -9,9 +9,6 @@ docker_engine:
 docker_machine:
   version: 0.16.0
 
-ripgrep:
-  version: 11.0.2
-
 slack:
   version: 4.0.1
 
