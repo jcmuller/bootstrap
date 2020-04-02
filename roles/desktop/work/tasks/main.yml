@@ -97,18 +97,6 @@
     state: absent
 # }}}
 
-# jsonnet {{{
-- name: Install jsonnet
-  tags: [jsonnet]
-  unarchive:
-    src: https://github.com/google/jsonnet/releases/download/{{ jsonnet.version }}/jsonnet-bin-{{ jsonnet.version }}-linux.tar.gz
-    dest: /usr/local/bin
-    remote_src: true
-    owner: root
-    group: root
-    mode: 0755
-# }}}
-
 # Install duoconnect {{{
 - name: Create install dir
   tags: [duoconnect]
