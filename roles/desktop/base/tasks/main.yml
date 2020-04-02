@@ -194,15 +194,6 @@
     group: root
     mode: 0755
 
-- name: Install z
-  tags: [z, zsh]
-  get_url:
-    url: "https://raw.githubusercontent.com/rupa/z/{{ z.version }}/z.sh"
-    dest: /usr/local/bin
-    owner: root
-    group: root
-    mode: 0755
-
 - name: Install base16-tomorrow-night
   tags: [base16-tomorrow-night, zsh]
   get_url:

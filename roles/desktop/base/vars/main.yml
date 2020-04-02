@@ -15,8 +15,5 @@ slack:
 slackcat:
   version: "1.6"
 
-z:
-  version: v1.11
-
 nextcloud:
   version: 2.6.4
