@@ -1,9 +1,9 @@
 ---
 docker_compose:
-  version: 1.24.0
+  version: 1.25.4
 
 docker_engine:
-  version: 17*
+  version: 19*
   ubuntu_release: bionic
 
 docker_machine:
