@@ -12,6 +12,78 @@ docker_machine:
 jq:
   version: "1.6"
 
+nextcloud:
+  version: 2.6.4
+
+packages:
+  - abook
+  - apt-transport-https
+  - awscli
+  - bat
+  - build-essential
+  - ca-certificates
+  - cmake
+  - copyq
+  - curl
+  - dunst
+  - gettext # neovim
+  - git
+  - gnupg2
+  - gnutls-bin
+  - graphviz
+  - htop
+  - laptop-mode-tools
+  - ldap-utils
+  - libfontconfig1-dev # alacritty
+  - libfreetype6-dev # alacritty
+  - libpq-dev
+  - libreadline-dev
+  - libssl-dev # required for older version of ruby
+  - libtool-bin # neovim
+  - libxcb-xfixes0-dev # alacritty
+  - moreutils
+  - neomutt
+  - network-manager-openvpn
+  - nfs-common
+  - offlineimap
+  - openssh-server
+  - openvpn
+  - pass
+  - pass-extension-tail
+  - pavucontrol
+  - pasystray
+  - phantomjs
+  - pkg-config
+  - playerctl
+  - postgresql-client
+  - powerline
+  - powertop
+  - py3status
+  - python3
+  - python3-pip
+  - python-boto
+  - python-dev
+  - python-pip
+  - python-virtualenv
+  - qrencode
+  - ranger
+  - redis-tools
+  - redshift-gtk
+  - rofi
+  - shellcheck
+  - sloccount
+  - socat
+  - surf
+  - tmux
+  - traceroute
+  - tree
+  - universal-ctags
+  - xfonts-terminus
+  - urlview
+  - volumeicon-alsa
+  - xclip
+  - zsh
+
 plantuml:
   version: 1.2020.2
 
@@ -20,9 +92,6 @@ slack:
 
 slackcat:
   version: "1.6"
-
-nextcloud:
-  version: 2.6.4
 
 yj:
   version: v4.0.0

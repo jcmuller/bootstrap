@@ -14,61 +14,7 @@
 - name: Install packages # {{{
   tags: [packages, core]
   apt:
-    name:
-      - abook
-      - apt-transport-https
-      - awscli
-      - bat
-      - build-essential
-      - ca-certificates
-      - cmake
-      - curl
-      - dunst
-      - gettext # neovim
-      - git
-      - gnupg2
-      - gnutls-bin
-      - graphviz
-      - htop
-      - laptop-mode-tools
-      - ldap-utils
-      - libfontconfig1-dev # alacritty
-      - libfreetype6-dev # alacritty
-      - libpq-dev
-      - libreadline-dev
-      - libssl-dev # required for older version of ruby
-      - libtool-bin # neovim
-      - libxcb-xfixes0-dev # alacritty
-      - moreutils
-      - neomutt
-      - openssh-server
-      - openvpn
-      - pass
-      - pass-extension-tail
-      - phantomjs
-      - pkg-config
-      - postgresql-client
-      - powerline
-      - powertop
-      - py3status
-      - python3
-      - python3-pip
-      - python-boto
-      - python-dev
-      - python-pip
-      - python-virtualenv
-      - qrencode
-      - redis-tools
-      - redshift-gtk
-      - rofi
-      - shellcheck
-      - sloccount
-      - socat
-      - tmux
-      - traceroute
-      - tree
-      - xclip
-      - zsh
+    name: "{{packages}}"
     state: latest
     update_cache: true
 # }}}
