@@ -269,3 +269,28 @@
     dest: /usr/local/lib/summon/gopass
     mode: 0755
 # }}}
+- name: Install user systemctl units # {{{
+  tags: systemctl
+  file:
+    dest: ~/.config/systemd/user/
+    state: directory
+    mode: 0755
+
+- name: Install user systemctl
+  tags: systemctl
+  copy:
+    src: "{{item}}"
+    dest: ~/.config/systemd/user/
+    owner: '{{user.name}}'
+    group: '{{user.group}}'
+    mode: 0644
+  with_items:
+    - systemd/dunst.service
+    - systemd/offlineimap@.service
+
+- name: Install
+  tags: systemctl
+  shell: |
+    systemctl --user enable offlineimap@Personal.service
+    systemctl --user enable dunst.service
+# }}}
