@@ -21,7 +21,7 @@
     repo: https://github.com/TheLocehiliosan/yadm.git
     dest: ~/.yadm-src
 - name: Ensure bin exists
-  tags: [yadm, dropbox, gopass]
+  tags: [yadm, gopass]
   file:
     dest: ~/bin
     mode: 0755
@@ -50,21 +50,6 @@
   git:
     repo: https://github.com/zsh-users/antigen
     dest: ~/.antigen-src
-# }}}
-# Install dropbox {{{
-- name: Install dropboxd
-  tags: [dropbox]
-  shell: wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-  args:
-    chdir: ~/
-    creates: ~/.dropbox-dist/dropboxd
-- name: Install dropbox
-  tags: [dropbox]
-  get_url:
-    url: https://www.dropbox.com/download?dl=packages/dropbox.py
-    dest: ~/bin/dropbox
-    mode: 0755
-    force: true
 # }}}
 - name: Install goobook # {{{
   tags: [mutt, goobook]
