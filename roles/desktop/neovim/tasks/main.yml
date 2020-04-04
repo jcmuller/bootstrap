@@ -63,11 +63,12 @@
       - vim-tiny
     state: absent
 # }}}
-- name: Register neovim as a vim alternative # {{{
+- name: symlink vim # {{{
   become: true
-  alternatives:
-    name: vim
-    path: /usr/local/bin/nvim
+  file:
+    src: /usr/local/bin/nvim
+    dest: /usr/bin/vim
+    state: link
 # }}}
 - name: Install vimdiff # {{{
   tags: [vimdiff]
