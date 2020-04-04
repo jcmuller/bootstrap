@@ -1,5 +1,5 @@
 ---
-- name: Provision a new work computer
+- name: Provision a new computer
   hosts: all, localhost
   gather_facts: yes
 
@@ -38,6 +38,7 @@
     - {role: desktop/alacritty, tags: alacritty}
     - {role: desktop/neovim, tags: neovim}
     - {role: desktop/iptables, tags: iptables, become: true}
+    - {role: desktop/work, tags: work, become: true}
 
   post_tasks:
     - name: Add {{ user.name }} to docker group
