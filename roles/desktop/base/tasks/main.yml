@@ -276,3 +276,27 @@
     mode: 0755
     force: true
 # }}}
+# Install plantuml {{{
+- name: Ensure directory exists
+  tags: [plantuml]
+  file: path=/usr/local/share/java state=directory
+
+- name: Install plantuml
+  tags: [plantuml]
+  get_url:
+    url: https://iweb.dl.sourceforge.net/project/plantuml/{{ plantuml.version }}/plantuml.{{ plantuml.version }}.jar
+    dest: /usr/local/share/java/plantuml.jar
+    owner: root
+    group: root
+    mode: 0644
+    force: true
+
+- name: Install entrypoint
+  tags: [plantuml]
+  copy:
+    src: plantuml
+    dest: /usr/local/bin/
+    owner: root
+    group: root
+    mode: 0755
+# }}}

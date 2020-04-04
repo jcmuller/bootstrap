@@ -12,6 +12,9 @@ docker_machine:
 jq:
   version: "1.6"
 
+plantuml:
+  version: 1.2020.2
+
 slack:
   version: 4.4.0
 

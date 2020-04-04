@@ -12,8 +12,5 @@ op:
 teleport:
   version: v4.2.1
 
-plantuml:
-  version: 1.2020.2
-
 gojira:
   version: v1.0.23
