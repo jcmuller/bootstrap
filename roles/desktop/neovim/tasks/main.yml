@@ -45,7 +45,7 @@
 - name: Install ruby libraries # {{{
   gem:
     name: neovim
-    executable: ~/.rbenv/shims/gem
+    executable: ~/.asdf/shims/gem
 # }}}
 - name: Install neovim # {{{
   become: true
