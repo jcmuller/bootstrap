@@ -33,6 +33,8 @@ asdf:
       version: 12.0.1
     - name: ruby
       version: 2.6.5
+    - name: rust
+      version: 1.42.0
     - name: shfmt
       version: 3.0.2
     - name: stern
