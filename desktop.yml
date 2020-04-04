@@ -57,12 +57,7 @@
 
     - role: desktop/user
       tags: [user]
-      become: true
-      become_user: "{{ user.name }}"
 
-    - role: desktop/user-as-root
-      tags: [user-as-root]
-      become: true
 
     - role: desktop/neovim
       tags: [neovim]

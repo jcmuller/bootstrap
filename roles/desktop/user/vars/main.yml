@@ -1,9 +1,4 @@
 ---
-helm:
-  plugins:
-    - source: https://github.com/databus23/helm-diff
-      version: "v2.11.0+5"
-
 asdf:
   version: v0.7.7
   plugins:
@@ -43,3 +38,20 @@ asdf:
       version: 0.8.0
     - name: terraform
       version: 0.12.17
+
+browserpassnative:
+  version: 3.0.6
+
+gopass:
+  version: 1.8.6
+
+helm:
+  plugins:
+    - source: https://github.com/databus23/helm-diff
+      version: "v2.11.0+5"
+
+summon:
+  version: v0.8.1
+
+version_manager_shell_string:
+  version: v0.0.1

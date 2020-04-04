@@ -1,3 +1,0 @@
-#!/bin/bash
-
-gopass $1 | head -1
