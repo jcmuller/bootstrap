@@ -9,20 +9,11 @@ dive:
 op:
   version: v0.6.2
 
-jq:
-  version: "1.6"
-
 teleport:
   version: v4.2.1
-
-yq:
-  version: 3.1.2
 
 plantuml:
   version: 1.2020.2
 
 gojira:
   version: v1.0.23
-
-yj:
-  version: v4.0.0

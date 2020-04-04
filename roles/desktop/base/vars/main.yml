@@ -9,6 +9,9 @@ docker_engine:
 docker_machine:
   version: 0.16.0
 
+jq:
+  version: "1.6"
+
 slack:
   version: 4.4.0
 
@@ -17,3 +20,9 @@ slackcat:
 
 nextcloud:
   version: 2.6.4
+
+yj:
+  version: v4.0.0
+
+yq:
+  version: 3.1.2

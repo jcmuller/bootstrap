@@ -34,36 +34,6 @@
     group: root
     mode: 0755
 # }}}
-- name: Install jq # {{{
-  tags: jq
-  get_url:
-    url: https://github.com/stedolan/jq/releases/download/jq-{{ jq.version }}/jq-linux64
-    dest: /usr/local/bin/jq
-    owner: root
-    group: root
-    mode: 0755
-    force: true
-# }}}
-- name: Install yq # {{{
-  tags: yq
-  get_url:
-    url: https://github.com/mikefarah/yq/releases/download/{{ yq.version }}/yq_linux_amd64
-    dest: /usr/local/bin/yq
-    owner: root
-    group: root
-    mode: 0755
-    force: true
-# }}}
-- name: Install yj # {{{
-  tags: yj
-  get_url:
-    url: https://github.com/sclevine/yj/releases/download/{{ yj.version }}/yj-linux
-    dest: /usr/local/bin/yj
-    owner: root
-    group: root
-    mode: 0755
-    force: true
-# }}}
 # {{{ Install teleport
 - name: Create teleport install dir
   tags: [k8s, teleport]
