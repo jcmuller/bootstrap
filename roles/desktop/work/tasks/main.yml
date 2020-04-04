@@ -24,13 +24,6 @@
     mode: 0755
     force: true
 # }}}
-- name: Install pack # {{{
-  tags: pack
-  unarchive:
-    src: https://github.com/buildpack/pack/releases/download/{{ pack.version }}/pack-{{ pack.version }}-linux.tgz
-    dest: /usr/local/bin
-    remote_src: true
-# }}}
 - name: Install 1password cli # {{{
   tags: [1password]
   unarchive:

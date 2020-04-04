@@ -6,9 +6,6 @@ aws_vault:
 dive:
   version: 0.9.2
 
-pack:
-  version: v0.4.1
-
 op:
   version: v0.6.2
 
