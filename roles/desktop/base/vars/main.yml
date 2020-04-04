@@ -42,6 +42,7 @@ packages:
   - libtool-bin # neovim
   - libxcb-xfixes0-dev # alacritty
   - moreutils
+  - msmtp
   - neomutt
   - network-manager-openvpn
   - nfs-common
