@@ -70,12 +70,6 @@
 
     - role: desktop/neovim
       tags: [neovim]
-      become: true
-      become_user: "{{ user.name }}"
-
-    - role: desktop/install-neovim
-      tags: [neovim]
-      become: true
 
     - role: desktop/iptables
       tags: [iptables]
