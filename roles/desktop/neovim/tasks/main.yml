@@ -37,11 +37,6 @@
     dest: ~/.config/nvim
     state: link
 # }}}
-- name: Install python libraries # {{{
-  pip:
-    name: pynvim
-    executable: pip3
-# }}}
 - name: Install ruby libraries # {{{
   gem:
     name: neovim
@@ -77,4 +72,19 @@
     src: vimdiff
     dest: /usr/local/bin/
     mode: 0755
+# }}}
+- name: Install python libraries # {{{
+  args:
+    executable: /bin/bash
+  shell: |
+    virtualenv -p /usr/bin/python2 ~/.venvs/nvim2
+    virtualenv -p /usr/bin/python3 ~/.venvs/nvim3
+    source ~/.venvs/nvim2/bin/activate
+    pip install --upgrade pynvim
+    pip install --upgrade pip
+    deactivate
+    source ~/.venvs/nvim3/bin/activate
+    pip install --upgrade pynvim
+    pip install --upgrade pip
+    deactivate
 # }}}
