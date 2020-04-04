@@ -120,56 +120,6 @@
     append: true
     shell: /usr/bin/zsh
 # }}}
-# {{{ Install browserpass-native
-- name: Set browserpass-native url
-  tags: [browserpass-native]
-  set_fact:
-    browserpass_native_url: https://github.com/browserpass/browserpass-native/releases/download/{{ browserpassnative.version }}/browserpass-linux64-{{ browserpassnative.version }}.tar.gz
-
-- name: Create browserpass-native install dir
-  tags: [browserpass-native]
-  file: path=/tmp/browserpass-native state=directory
-
-- name: Download browserpass-native
-  tags: [browserpass-native]
-  get_url:
-    url: "{{ browserpass_native_url }}"
-    dest: /tmp/browserpass-native
-
-- name: Unpack browserpass-native
-  tags: [browserpass-native]
-  shell: |
-    tar --strip-components=1 -zxpf *.tar.gz
-  args:
-    chdir: /tmp/browserpass-native
-
-- name: Install browserpass-native
-  tags: [browserpass-native]
-  become: true
-  copy:
-    src: /tmp/browserpass-native/browserpass-linux64
-    remote_src: true
-    dest: /usr/local/bin/browserpass-native
-    owner: root
-    group: root
-    mode: 0755
-
-- name: Install browserpass-native
-  tags: [browserpass-native]
-  become: true
-  make:
-    target: "{{ item }}"
-    chdir: "/tmp/browserpass-native"
-  with_items:
-    - install
-    - hosts-firefox
-
-- name: Remove browserpass-native installation files
-  tags: [browserpass-native]
-  file:
-    path: /tmp/browserpass-native
-    state: absent
-# }}}
 - name: Install logrotate config for xsession-errors # {{{
   tags: [xsession]
   become: true
@@ -286,4 +236,54 @@
   shell: |
     systemctl --user enable offlineimap@Personal.service
     systemctl --user enable dunst.service
+# }}}
+# {{{ Install browserpass-native
+- name: Set browserpass-native url
+  tags: [browserpass-native]
+  set_fact:
+    browserpass_native_url: https://github.com/browserpass/browserpass-native/releases/download/{{ browserpassnative.version }}/browserpass-linux64-{{ browserpassnative.version }}.tar.gz
+
+- name: Create browserpass-native install dir
+  tags: [browserpass-native]
+  file: path=/tmp/browserpass-native state=directory
+
+- name: Download browserpass-native
+  tags: [browserpass-native]
+  get_url:
+    url: "{{ browserpass_native_url }}"
+    dest: /tmp/browserpass-native
+
+- name: Unpack browserpass-native
+  tags: [browserpass-native]
+  shell: |
+    tar --strip-components=1 -zxpf *.tar.gz
+  args:
+    chdir: /tmp/browserpass-native
+
+- name: Install browserpass-native
+  tags: [browserpass-native]
+  become: true
+  copy:
+    src: /tmp/browserpass-native/browserpass-linux64
+    remote_src: true
+    dest: /usr/local/bin/browserpass-native
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install browserpass-native
+  tags: [browserpass-native]
+  become: true
+  make:
+    target: "{{ item }}"
+    chdir: "/tmp/browserpass-native"
+  with_items:
+    - install
+    - hosts-firefox
+
+- name: Remove browserpass-native installation files
+  tags: [browserpass-native]
+  file:
+    path: /tmp/browserpass-native
+    state: absent
 # }}}
