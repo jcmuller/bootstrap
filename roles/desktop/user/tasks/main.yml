@@ -66,13 +66,6 @@
     mode: 0755
     force: true
 # }}}
-# Install browserpass-native {{{
-- name: Build browserpass-native
-  tags: [browserpass]
-  make:
-    target: configure
-    chdir: ~/go/src/github.com/browserpass/browserpass-native
-# }}}
 - name: Install goobook # {{{
   tags: [mutt, goobook]
   pip:
