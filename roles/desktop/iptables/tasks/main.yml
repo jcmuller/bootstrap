@@ -1,19 +1,24 @@
+# vim: set foldmethod=marker nospell:
 ---
-- name: Install iptables-persistent
+- name: Install iptables-persistent # {{{
   apt:
     name: iptables-persistent
     state: latest
-- name: Configure iptables
+# }}}
+- name: Configure iptables # {{{
   copy:
     src: iptables
     dest: /etc/network/if-pre-up.d/
     mode: 0755
-- name: Copy iptables scripts
+# }}}
+- name: Copy iptables scripts # {{{
   copy:
     src: "{{ item }}"
     dest: /usr/local/bin/
     mode: 0755
   with_fileglob:
     - iptables*.sh
-- name: Run iptables once
+# }}}
+- name: Run iptables once # {{{
   command: iptables.sh
+# }}}

@@ -1,15 +1,17 @@
 ---
 # vim: set foldmethod=marker nospell:
-- name: Ensure zsh is installed
+- name: Ensure zsh is installed # {{{
   tags: [zsh]
   apt:
     name: zsh
-- name: Set shell to zsh
+# }}}
+- name: Set shell to zsh # {{{
   tags: [zsh]
   user:
     name: "{{ user.name }}"
     append: true
     shell: /usr/bin/zsh
+# }}}
 # {{{ Install browserpass-native
 - name: Set browserpass-native url
   tags: [browserpass-native]
@@ -52,12 +54,13 @@
     path: /tmp/browserpass-native
     state: absent
 # }}}
-- name: Install logrotate config for xsession-errors
+- name: Install logrotate config for xsession-errors # {{{
   tags: [xsession]
   copy:
     src: xsession-errors
     dest: /etc/logrotate.d/
     mode: 0644
+# }}}
 - name: Install version_manager_shell_string # {{{
   tags: [version_manager_shell_string]
   become: true

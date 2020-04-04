@@ -1,38 +1,48 @@
+# vim: set foldmethod=marker nospell:
 ---
-- name: Download neovim
+- name: Download neovim # {{{
   git:
     repo: https://github.com/neovim/neovim.git
     dest: ~/Development/OSS/neovim
-- name: Build neovim
+# }}}
+- name: Build neovim # {{{
   make:
     chdir: ~/Development/OSS/neovim
     params:
       CMAKE_BUILD_TYPE: Release
       "--jobs": "4"
-- name: Clone configs
+# }}}
+- name: Clone configs # {{{
   git:
     repo: git@github.com:jcmuller/myvimconfig.git
     dest: ~/Development/MyStuff/myvimconfig
     accept_hostkey: true
     update: true
-- name: link vim config
+# }}}
+- name: link vim config # {{{
   file:
     src: ~/Development/MyStuff/myvimconfig/vim
     dest: ~/.vim
     state: link
-- file:
+# }}}
+- name: Ensure ~/.config exists # {{{
+  file:
     path: ~/.config/
     state: directory
-- name: symlink files
+# }}}
+- name: symlink files # {{{
   file:
     src: ~/Development/MyStuff/myvimconfig/vim
     dest: ~/.config/nvim
     state: link
-- name: Install python libraries
+# }}}
+- name: Install python libraries # {{{
   pip:
     name: pynvim
     executable: pip3
-- name: Install ruby libraries
+# }}}
+- name: Install ruby libraries # {{{
   gem:
     name: neovim
     executable: ~/.rbenv/shims/gem
+# }}}

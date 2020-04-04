@@ -16,6 +16,7 @@
       tags: pre_tasks
       debug:
         msg: "{{ ansible_distribution }}"
+
     - name: Update all packages
       tags: pre_tasks
       apt:
@@ -23,6 +24,7 @@
         update_cache: yes
       become: true
       when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
     - name: Update all packages
       tags: pre_tasks
       pacman:
@@ -30,6 +32,7 @@
         update_cache: yes
       become: true
       when: ansible_distribution == 'Archlinux'
+
     - name: Create user
       user:
         name: "{{ user.name }}"
@@ -38,6 +41,7 @@
         shell: /usr/bin/zsh
       become: true
       when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
     - name: Create user
       user:
         name: "{{ user.name }}"
