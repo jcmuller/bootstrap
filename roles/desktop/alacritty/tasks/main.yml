@@ -1,0 +1,45 @@
+# vim: set foldmethod=marker nospell:
+---
+- name: Download alacritty # {{{
+  git:
+    repo: https://github.com/alacritty/alacritty.git
+    dest: ~/Development/OSS/alacritty
+    version: "{{ alacritty.version }}"
+# }}}
+- name: Build alacritty # {{{
+  args:
+    executable: /bin/bash
+    chdir: ~/Development/OSS/alacritty
+  shell: |
+    git config --global --unset-all url.git@github.com:.insteadOf
+    cargo build --release
+    git config --global --add url.git@github.com:.insteadOf gh:
+    git config --global --add url.git@github.com:.insteadOf https://github.com/
+# }}}
+- name: Install binary # {{{
+  become: true
+  copy:
+    src:  ~/Development/OSS/alacritty/target/release/alacritty
+    dest: /usr/local/bin/
+    owner: root
+    group: root
+    mode: 0755
+# }}}
+- name: Install logo # {{{
+  become: true
+  copy:
+    src:  ~/Development/OSS/alacritty/extra/logo/alacritty-term.svg
+    dest: /usr/share/pixmaps/Alacritty.svg
+    owner: root
+    group: root
+    mode: 0755
+# }}}
+- name: Install desktop entry # {{{
+  become: true
+  args:
+    executable: /bin/bash
+    chdir: "~{{user.name}}/Development/OSS/alacritty"
+  shell: |
+    desktop-file-install extra/linux/Alacritty.desktop
+    update-desktop-database
+# }}}

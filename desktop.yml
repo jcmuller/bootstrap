@@ -58,6 +58,8 @@
     - role: desktop/user
       tags: [user]
 
+    - role: desktop/alacritty
+      tags: [alacritty]
 
     - role: desktop/neovim
       tags: [neovim]
