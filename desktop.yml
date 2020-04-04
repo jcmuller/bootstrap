@@ -55,10 +55,6 @@
       tags: [base]
       become: true
 
-    - role: desktop/vpn
-      tags: [vpn]
-      become: true
-
     - role: desktop/user
       tags: [user]
       become: true
