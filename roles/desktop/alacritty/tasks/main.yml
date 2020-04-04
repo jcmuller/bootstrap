@@ -11,6 +11,7 @@
     executable: /bin/bash
     chdir: ~/Development/OSS/alacritty
   shell: |
+    source ~/.asdf/asdf.sh
     git config --global --unset-all url.git@github.com:.insteadOf
     cargo build --release
     git config --global --add url.git@github.com:.insteadOf gh:
