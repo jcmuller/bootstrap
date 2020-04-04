@@ -1,5 +1,16 @@
 # vim: set foldmethod=marker nospell:
 ---
+- name: configure console and control key # {{{
+  copy:
+    src: "{{item}}"
+    dest: /etc/default/
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - console-setup
+    - keyboard
+# }}}
 - name: Install packages # {{{
   tags: [packages, core]
   apt:
