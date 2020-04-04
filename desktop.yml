@@ -23,15 +23,6 @@
         upgrade: dist
         update_cache: yes
       become: true
-      when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
-
-    - name: Update all packages
-      tags: pre_tasks
-      pacman:
-        upgrade: yes
-        update_cache: yes
-      become: true
-      when: ansible_distribution == 'Archlinux'
 
     - name: Create user
       user:
@@ -40,15 +31,6 @@
         append: true
         shell: /usr/bin/zsh
       become: true
-      when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
-
-    - name: Create user
-      user:
-        name: "{{ user.name }}"
-        append: true
-        shell: /usr/bin/zsh
-      become: true
-      when: ansible_distribution == 'Archlinux'
 
   roles:
     - role: desktop/base
