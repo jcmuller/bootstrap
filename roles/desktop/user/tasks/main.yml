@@ -335,3 +335,34 @@
     scripts/dictcli.py install en-US
     scripts/dictcli.py install es-ES
 # }}}
+# {{{ tmux
+- name: Download tmux
+  tags: tmux
+  git:
+    repo: git@github.com:tmux/tmux.git
+    dest: ~/Development/OSS/tmux
+    accept_hostkey: true
+    update: true
+    version: "{{tmux.version}}"
+
+- name: Configure tmux
+  tags: tmux
+  args:
+    executable: /bin/bash
+    chdir: ~/Development/OSS/tmux
+  shell: |
+    sh autogen.sh
+    ./configure
+
+- name: Build tmux
+  tags: tmux
+  make:
+    chdir: ~/Development/OSS/tmux
+
+- name: Install tmux
+  tags: tmux
+  become: true
+  make:
+    chdir: ~{{user.name}}/Development/OSS/tmux
+    target: install
+# }}}
