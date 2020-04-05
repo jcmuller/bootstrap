@@ -284,3 +284,10 @@
     path: /tmp/browserpass-native
     state: absent
 # }}}
+- name: Ensure dunst cache dir exists
+  tags: dunst
+  file:
+    dest: ~/.cache/dunst
+    state: directory
+    mode: 0755
+# }}}
