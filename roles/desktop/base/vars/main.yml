@@ -48,7 +48,7 @@ packages:
   - moreutils
   - msmtp
   - neomutt
-  - network-manager-openvpn
+  - network-manager-openvpn-gnome
   - nfs-common
   - offlineimap
   - openssh-server
