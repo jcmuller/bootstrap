@@ -34,7 +34,9 @@
     state: link
     mode: 0755
 - name: Yadm get config
-  command: ~/bin/yadm clone git@github.com:jcmuller/dotrcs.git
+  command:
+    cmd: ~/bin/yadm clone git@github.com:jcmuller/dotrcs.git
+    creates: ~/.config/yadm/repo.git
 # }}}
 # {{{ Install gopasspwd
 - name: Copy gopasspwd
