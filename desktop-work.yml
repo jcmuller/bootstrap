@@ -42,9 +42,13 @@
 
   post_tasks:
     - name: Add {{ user.name }} to docker group
-      tags: docker
+      tags:
+        - docker
+        - groups
       user:
         name: "{{ user.name }}"
-        groups: docker
+        groups:
+          - docker
+          - sudo
         append: true
       become: true
