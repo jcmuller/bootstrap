@@ -300,3 +300,38 @@
     mv /usr/bin/dmenu /usr/bin/dmenu_orig
     ln -s /usr/bin/rofi /usr/bin/dmenu
 # }}}
+- name: Download qutebrowser # {{{
+  tags: qutebrowser
+  git:
+    repo: git@github.com:qutebrowser/qutebrowser.git
+    dest: ~/Development/OSS/qutebrowser
+    accept_hostkey: true
+    update: true
+    version: "{{qutebrowser.version}}"
+
+- name: Install dependencies
+  tags: qutebrowser
+  pip:
+    chdir: ~/Development/OSS/qutebrowser
+    executable: /home/jcmuller/.asdf/shims/pip3
+    requirements: requirements.txt
+
+- name: Install it
+  tags: qutebrowser
+  become: true
+  args:
+    executable: /bin/bash
+    chdir: ~{{user.name}}/Development/OSS/qutebrowser
+  shell: |
+    python3 setup.py install
+
+- name: Install dictionaries
+  tags: qutebrowser
+  args:
+    executable: /bin/bash
+    chdir: ~/Development/OSS/qutebrowser
+  shell: |
+    scripts/dictcli.py update
+    scripts/dictcli.py install en-US
+    scripts/dictcli.py install es-ES
+# }}}
