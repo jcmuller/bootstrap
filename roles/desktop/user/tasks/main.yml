@@ -379,3 +379,25 @@
     executable: /home/jcmuller/.asdf/shims/gem
     name: tmuxinator
 # }}}
+- name: Install tmux config # {{{
+  tags: [tmux, tmux-config]
+  git:
+    repo: git@github.com:jcmuller/my-tmux-config.git
+    dest: ~/Development/MyStuff/my-tmux-config
+    accept_hostkey: true
+    update: true
+
+- name: Symlink .tmux
+  tags: [tmux, tmux-config]
+  file:
+    src: ~/Development/MyStuff/my-tmux-config/tmux
+    dest: ~/.tmux
+    state: link
+
+- name: Symlink .tmux.conf
+  tags: [tmux, tmux-config]
+  file:
+    src: ~/Development/MyStuff/my-tmux-config/tmux.conf
+    dest: ~/.tmux.conf
+    state: link
+# }}}
