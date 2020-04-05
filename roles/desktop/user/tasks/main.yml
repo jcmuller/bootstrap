@@ -291,3 +291,12 @@
     state: directory
     mode: 0755
 # }}}
+- name: Make rofi a dmenu provider # {{{
+  tags: [dmenu, rofi]
+  become: true
+  args:
+    executable: /bin/bash
+  shell: |
+    mv /usr/bin/dmenu /usr/bin/dmenu_orig
+    ln -s /usr/bin/rofi /usr/bin/dmenu
+# }}}
