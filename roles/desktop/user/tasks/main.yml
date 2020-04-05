@@ -91,7 +91,12 @@
 # Helm plugins {{{
 - name: Install helm plugins
   tags: [helm-plugins]
-  shell: helm plugin install {{ item.source }} --version {{ item.version }}
+  args:
+    executable: /bin/bash
+    creates: ~/.local/share/helm/plugins/helm-diff/
+  shell: |
+    . ~/.asdf/asdf.sh
+    helm plugin install {{ item.source }}
   with_items: "{{ helm.plugins }}"
 # }}}
 - name: Ensure zsh is installed # {{{
