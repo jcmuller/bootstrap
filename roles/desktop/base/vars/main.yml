@@ -20,6 +20,7 @@ packages:
   - apt-transport-https
   - awscli
   - bat
+  - bison # tmux
   - build-essential
   - ca-certificates
   - cmake
@@ -34,8 +35,11 @@ packages:
   - htop
   - laptop-mode-tools
   - ldap-utils
+  - libevent-dev # tmux
+  - libffi-dev # qutebrowser
   - libfontconfig1-dev # alacritty
   - libfreetype6-dev # alacritty
+  - libncurses-dev # tmux
   - libpq-dev
   - libreadline-dev
   - libssl-dev # required for older version of ruby
@@ -51,8 +55,8 @@ packages:
   - openvpn
   - pass
   - pass-extension-tail
-  - pavucontrol
   - pasystray
+  - pavucontrol
   - phantomjs
   - pkg-config
   - playerctl
@@ -60,12 +64,12 @@ packages:
   - powerline
   - powertop
   - py3status
-  - python3
-  - python3-pip
   - python-boto
   - python-dev
   - python-pip
   - python-virtualenv
+  - python3
+  - python3-pip
   - qrencode
   - ranger
   - redis-tools
@@ -75,14 +79,14 @@ packages:
   - sloccount
   - socat
   - surf
-  - tmux
   - traceroute
   - tree
   - universal-ctags
-  - xfonts-terminus
   - urlview
   - volumeicon-alsa
   - xclip
+  - xdotool
+  - xfonts-terminus
   - zsh
 
 plantuml:
