@@ -246,16 +246,27 @@
   args:
     chdir: /tmp/browserpass-native
 
-- name: Install browserpass-native
+- name: Copy
   tags: [browserpass-native]
   become: true
   copy:
     src: /tmp/browserpass-native/browserpass-linux64
-    remote_src: true
-    dest: /usr/local/bin/browserpass-native
+    dest: /tmp/browserpass-native/browserpass
     owner: root
     group: root
     mode: 0755
+    force: true
+
+- name: Install browserpass-native binary
+  tags: [browserpass-native]
+  become: true
+  copy:
+    src: /tmp/browserpass-native/browserpass-linux64
+    dest: /usr/local/bin/browserpass
+    owner: root
+    group: root
+    mode: 0755
+    force: true
 
 - name: Install browserpass-native
   tags: [browserpass-native]
