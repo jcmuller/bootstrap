@@ -51,18 +51,12 @@
     repo: https://github.com/zsh-users/antigen
     dest: ~/.antigen-src
 # }}}
-- name: Install goobook # {{{
-  tags: [mutt, goobook]
-  pip:
-    name: goobook
-    executable: pip3
-# }}}
 - name: Install asdf #{{{
   tags: [asdf]
   git:
     repo: https://github.com/asdf-vm/asdf.git
     dest: ~/.asdf
-    version: "{{ asdf.version}}"
+    version: "{{asdf.version}}"
 
 - name: Install asdf plugins
   tags: [asdf, asdf-plugins]
@@ -80,11 +74,18 @@
     . ~/.asdf/asdf.sh
     asdf install {{item.name}} {{item.version}}
     asdf global {{item.name}} {{item.version}}
+    asdf reshim
   args:
     executable: /bin/bash
     creates: "~/.asdf/installs/{{item.name}}/{{item.version}}"
   with_items: "{{asdf.plugins}}"
 #}}}
+- name: Install goobook # {{{
+  tags: [mutt, goobook]
+  pip:
+    name: goobook
+    executable: /home/jcmuller/.asdf/shims/pip
+# }}}
 # Helm plugins {{{
 - name: Install helm plugins
   tags: [helm-plugins]
