@@ -65,8 +65,9 @@
     state: present
 # }}}
 - name: Install spotify # {{{
+  become: true
   tags: [packages, desktop, spotify]
-  command: sudo snap install spotify
+  command: snap install spotify
 # }}}
 - name: Add apt keys for docker # {{{
   tags: [packages, docker]
