@@ -373,3 +373,9 @@
     chdir: ~{{user.name}}/Development/OSS/tmux
     target: install
 # }}}
+- name: Install tmuxinator # {{{
+  tags: tmuxinator
+  gem:
+    executable: /home/jcmuller/.asdf/shims/gem
+    name: tmuxinator
+# }}}
