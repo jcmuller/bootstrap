@@ -38,6 +38,10 @@ iptables -P INPUT DROP
 iptables -P OUTPUT DROP
 iptables -P FORWARD DROP
 
+# Allow traffic on loopback
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+
 # Allow previously established connections to continue uninterupted
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
@@ -164,14 +168,8 @@ iptables -A OUTPUT -p tcp --dport 5269 -j ACCEPT
 iptables -A INPUT -d 255.255.255.255 -j DROP
 
 # VPNs
-iptables -A OUTPUT -p udp -d support-green.vpn.greenhouse.io --dport 1194 -j ACCEPT
-iptables -A OUTPUT -p tcp -d support-green.vpn.greenhouse.io --dport 1194 -j ACCEPT
-
-iptables -A OUTPUT -p udp -d prod-green.vpn.greenhouse.io --dport 1194 -j ACCEPT
-iptables -A OUTPUT -p tcp -d prod-green.vpn.greenhouse.io --dport 1194 -j ACCEPT
-
-iptables -A OUTPUT -p udp -d prod-usw2-green.vpn.greenhouse.io --dport 1194 -j ACCEPT
-iptables -A OUTPUT -p tcp -d prod-usw2-green.vpn.greenhouse.io --dport 1194 -j ACCEPT
+iptables -A OUTPUT -p udp -d ovpn.prod.gh.team --dport 1194 -j ACCEPT
+iptables -A OUTPUT -p tcp -d ovpn.prod.gh.team --dport 1194 -j ACCEPT
 
 iptables -A OUTPUT -p udp -d home.juancmuller.com --dport 1194 -j ACCEPT
 
@@ -202,6 +200,15 @@ iptables -A INPUT -p tcp --dport 9292 -j ACCEPT
 iptables -A INPUT -p udp --dport 1900 -j DROP
 iptables -A OUTPUT -p udp --dport 1900 -j DROP
 
+# kind
+iptables -A OUTPUT -p tcp -d 172.17.0.2 --dport 6443 -j ACCEPT
+# minio
+iptables -A OUTPUT -p tcp -d 172.17.0.2 --dport 31311 -j ACCEPT
+# argo
+iptables -A OUTPUT -p tcp -d 172.17.0.2 --dport 8001 -j ACCEPT
+# calico
+iptables -A OUTPUT -p tcp -d 10.99.205.18  -j ACCEPT
+
 # Allow any traffic to the VPN
 iptables -A OUTPUT -o tun0 -j ACCEPT
 iptables -A OUTPUT -o tun1 -j ACCEPT
@@ -215,19 +222,19 @@ iptables -A INPUT -p udp --dport 54915 -j DROP
 iptables -A OUTPUT -p udp --dport 54915 -j DROP
 
 # NFS
-# denied  TCP 192.168.86.203:733 > 192.168.30.3:2049 (out:enp0s31f6)
-iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.20.3 --dport   111 -j ACCEPT
-iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.20.3 --dport   111 -j ACCEPT
-iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.20.3 --dport  2049 -j ACCEPT
-iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.20.3 --dport 32803 -j ACCEPT
-iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.20.3 --dport 32769 -j ACCEPT
-iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.20.3 --dport   892 -j ACCEPT
-iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.20.3 --dport   892 -j ACCEPT
-iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.20.3 --dport   875 -j ACCEPT
-iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.20.3 --dport   875 -j ACCEPT
-iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.20.3 --dport   662 -j ACCEPT
-iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.20.3 --dport   662 -j ACCEPT
-iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.20.3 --dport   744 -j ACCEPT
+# denied  TCP 192.168.86.203:733 > 192.168.11.3:2049 (out:enp0s31f6)
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.11.3 --dport   111 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.11.3 --dport   111 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.11.3 --dport  2049 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.11.3 --dport 32803 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.11.3 --dport 32769 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.11.3 --dport   892 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.11.3 --dport   892 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.11.3 --dport   875 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.11.3 --dport   875 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.11.3 --dport   662 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.11.3 --dport   662 -j ACCEPT
+iptables -A OUTPUT -m state --state NEW -p udp -d 192.168.11.3 --dport   744 -j ACCEPT
 
 # IOT
 iptables -A OUTPUT -m state --state NEW -p tcp -d 192.168.30.11 --dport 3000 -j ACCEPT
@@ -239,6 +246,15 @@ iptables -A INPUT -p tcp -d 192.168.30.11 -j DROP
 
 # GPG
 iptables -A OUTPUT -p tcp --dport 11371 -j ACCEPT
+
+# Teleport
+iptables -A OUTPUT -p tcp --dport 3023 -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 3026 -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 3080 -j ACCEPT
+
+# kubectl
+#iptables -A OUTPUT -p udp --dport 21027 -j ACCEPT
+#iptables -A OUTPUT -p udp --dport 8443 -j ACCEPT
 
 # Set up logging for incoming traffic.
 # iptables -N LOGNDROP
