@@ -217,8 +217,8 @@
   copy:
     src: "{{item}}"
     dest: ~/.config/systemd/user/
-    owner: '{{user.name}}'
-    group: '{{user.group}}'
+    owner: "{{user.name}}"
+    group: "{{user.group}}"
     mode: 0644
   with_items:
     - systemd/dunst.service
