@@ -231,67 +231,35 @@
     systemctl --user enable dunst.service
 # }}}
 # {{{ Install browserpass-native
-- name: Set browserpass-native url
-  tags: [browserpass-native]
-  set_fact:
-    browserpass_native_url: https://github.com/browserpass/browserpass-native/releases/download/{{ browserpassnative.version }}/browserpass-linux64-{{ browserpassnative.version }}.tar.gz
+- name: Check out browserpass
+  tags: [browserpass]
+  git:
+    repo: git@github.com:browserpass/browserpass-native.git
+    dest: ~/Development/OSS/browserpass-native
+    version: "{{browserpass.version}}"
 
-- name: Create browserpass-native install dir
-  tags: [browserpass-native]
-  file: path=/tmp/browserpass-native state=directory
+- name: Configure browserpass
+  tags: [browserpass]
+  make:
+    target: configure
+    chdir: ~/Development/OSS/browserpass-native
 
-- name: Download browserpass-native
-  tags: [browserpass-native]
-  get_url:
-    url: "{{ browserpass_native_url }}"
-    dest: /tmp/browserpass-native
+- name: Build browserpass
+  tags: [browserpass]
+  make:
+    chdir: ~/Development/OSS/browserpass-native
 
-- name: Unpack browserpass-native
-  tags: [browserpass-native]
-  shell: |
-    tar --strip-components=1 -zxpf *.tar.gz
-  args:
-    chdir: /tmp/browserpass-native
-
-- name: Copy
-  tags: [browserpass-native]
-  become: true
-  copy:
-    src: /tmp/browserpass-native/browserpass-linux64
-    dest: /tmp/browserpass-native/browserpass
-    owner: root
-    group: root
-    mode: 0755
-    force: true
-
-- name: Install browserpass-native binary
-  tags: [browserpass-native]
-  become: true
-  copy:
-    src: /tmp/browserpass-native/browserpass-linux64
-    dest: /usr/local/bin/browserpass
-    owner: root
-    group: root
-    mode: 0755
-    force: true
-
-- name: Install browserpass-native
-  tags: [browserpass-native]
+- name: Install browserpass
+  tags: [browserpass]
   become: true
   make:
-    target: "{{ item }}"
-    chdir: "/tmp/browserpass-native"
+    target: "{{item}}"
+    chdir: ~{{user.name}}/Development/OSS/browserpass-native
   with_items:
     - install
     - hosts-firefox
-
-- name: Remove browserpass-native installation files
-  tags: [browserpass-native]
-  file:
-    path: /tmp/browserpass-native
-    state: absent
 # }}}
-- name: Ensure dunst cache dir exists
+- name: Ensure dunst cache dir exists # {{{
   tags: dunst
   file:
     dest: ~/.cache/dunst

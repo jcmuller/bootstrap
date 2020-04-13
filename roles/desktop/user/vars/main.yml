@@ -39,7 +39,7 @@ asdf:
     - name: terraform
       version: 0.12.17
 
-browserpassnative:
+browserpass:
   version: 3.0.6
 
 gopass:
