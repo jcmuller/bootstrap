@@ -330,7 +330,7 @@
     ./configure
 
 - name: Build tmux
-  tags: tmux
+  tags: [tmux, tmux-build]
   make:
     chdir: ~/Development/OSS/tmux
 
