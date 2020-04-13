@@ -369,3 +369,10 @@
     dest: ~/.tmux.conf
     state: link
 # }}}
+- name: Install yakyak # {{{
+  tags: [packages, desktop, yakyak]
+  become: true
+  apt:
+    deb: "https://github.com/yakyak/yakyak/releases/download/v{{yakyak.version}}/yakyak-{{yakyak.version}}-linux-amd64.deb"
+    state: present
+# }}}

@@ -60,3 +60,6 @@ tmux:
 
 version_manager_shell_string:
   version: v0.0.1
+
+yakyak:
+  version: 1.5.4
