@@ -74,6 +74,7 @@ packages:
   - python-virtualenv
   - python3
   - python3-pip
+  - qalc
   - qrencode
   - ranger
   - redis-tools
