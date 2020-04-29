@@ -64,10 +64,10 @@
     deb: https://zoom.us/client/latest/zoom_amd64.deb
     state: present
 # }}}
-- name: Install spotify # {{{
-  become: true
-  tags: [packages, desktop, spotify]
-  command: snap install spotify
+#- name: Install spotify # {{{
+  #become: true
+  #tags: [packages, desktop, spotify]
+  #command: snap install spotify
 # }}}
 - name: Add apt keys for docker # {{{
   tags: [packages, docker]
