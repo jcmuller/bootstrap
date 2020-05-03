@@ -36,9 +36,19 @@
       - copyq
       - gimp
       - firefox
-      - i3
       - i3lock-fancy
+      - i3xrocks-battery
+      - i3xrocks-cpu-usage
+      - i3xrocks-media-player
+      - i3xrocks-memory
+      - i3xrocks-net-traffic
+      - i3xrocks-nm-vpn
+      - i3xrocks-time
+      - i3xrocks-volume
+      - i3xrocks-weather
+      - i3xrocks-wifi
       - qutebrowser # This is to get the prereqs
+      - font-terminus
       - xfonts-terminus
     state: latest
 # }}}
