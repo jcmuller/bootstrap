@@ -100,7 +100,7 @@ plantuml:
   version: 1.2020.2
 
 slack:
-  version: 4.4.0
+  version: 4.4.2
 
 slackcat:
   version: "1.6"
