@@ -27,7 +27,7 @@ packages:
   - cmake
   - copyq
   - curl
-  - dbeaver
+    #- dbeaver
   - dunst
   - elinks
   - gettext # neovim
@@ -42,7 +42,9 @@ packages:
   - libffi-dev # qutebrowser
   - libfontconfig1-dev # alacritty
   - libfreetype6-dev # alacritty
+  - libmsgpack-dev
   - libncurses-dev # tmux
+  - libnotify-bin
   - libpq-dev
   - libreadline-dev
   - libssl-dev # required for older version of ruby
@@ -56,7 +58,7 @@ packages:
   - offlineimap
   - openssh-server
   - openvpn
-  - openvpn-systemd-resolve
+  - openvpn-systemd-resolved
   - pass
   - pass-extension-tail
   - pasystray
@@ -68,12 +70,12 @@ packages:
   - powerline
   - powertop
   - py3status
-  - python-boto
-  - python-dev
-  - python-pip
-  - python-virtualenv
-  - python3
+  - python3-boto
+  - python3-dev
   - python3-pip
+  - python3-dnspython
+  - python3-tldextract
+  - python3-virtualenv
   - qalc
   - qrencode
   - ranger
