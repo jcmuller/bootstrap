@@ -27,7 +27,6 @@ packages:
   - cmake
   - copyq
   - curl
-    #- dbeaver
   - dunst
   - elinks
   - gettext # neovim
