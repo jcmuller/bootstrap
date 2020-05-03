@@ -81,19 +81,18 @@
     pkg: spotify-client
     state: present
 # }}}
-- name: Add apt keys for docker # {{{
+# Install docker # {{{
+- name: Add apt keys for docker
   tags: [packages, docker]
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
-# }}}
-- name: Add apt repository for docker # {{{
+- name: Add apt repository for docker
   tags: [packages, docker]
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ docker_engine.ubuntu_release }} stable"
     state: present
     update_cache: yes
-# }}}
-- name: Install docker # {{{
+- name: Install docker
   tags: [packages, docker]
   apt:
     pkg: docker-ce
