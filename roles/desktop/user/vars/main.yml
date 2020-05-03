@@ -7,7 +7,7 @@ asdf:
     - name: github-cli
       version: 0.6.4
     - name: golang
-      version: 1.14.1
+      version: 1.14.2
     - name: hadolint
       version: v1.17.5
     - name: helm
