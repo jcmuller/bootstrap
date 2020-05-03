@@ -86,7 +86,6 @@
   tags: [mutt, goobook]
   pip:
     name: goobook
-    executable: /home/jcmuller/.asdf/shims/pip
 # }}}
 # Helm plugins {{{
 - name: Install helm plugins
@@ -288,7 +287,6 @@
   tags: qutebrowser
   pip:
     chdir: ~/Development/OSS/qutebrowser
-    executable: /home/jcmuller/.asdf/shims/pip3
     requirements: requirements.txt
 
 - name: Install it
