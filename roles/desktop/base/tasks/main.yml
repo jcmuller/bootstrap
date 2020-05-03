@@ -282,3 +282,9 @@
     group: root
     mode: 0755
 # }}}
+- name: Install dbeaver client # {{{
+  tags: [packages, desktop, dbeaver]
+  apt:
+    deb: https://dbeaver.io/files/{{dbeaver.version}}/dbeaver-ce_{{dbeaver.version}}_amd64.deb
+    state: present
+# }}}
