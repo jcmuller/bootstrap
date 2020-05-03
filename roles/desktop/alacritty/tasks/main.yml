@@ -4,7 +4,7 @@
   git:
     repo: https://github.com/alacritty/alacritty.git
     dest: ~/Development/OSS/alacritty
-    version: "{{ alacritty.version }}"
+    version: "v{{ alacritty.version }}"
 # }}}
 - name: Build alacritty # {{{
   args:
@@ -13,18 +13,15 @@
   shell: |
     source ~/.asdf/asdf.sh
     git config --global --unset-all url.git@github.com:.insteadOf
-    cargo build --release
+    cargo install cargo-deb
+    cargo deb --install -p alacritty
     git config --global --add url.git@github.com:.insteadOf gh:
     git config --global --add url.git@github.com:.insteadOf https://github.com/
 # }}}
 - name: Install binary # {{{
   become: true
-  copy:
-    src:  ~/Development/OSS/alacritty/target/release/alacritty
-    dest: /usr/local/bin/
-    owner: root
-    group: root
-    mode: 0755
+  apt:
+    deb: "~/Development/OSS/alacritty/target/debian/alacritty_{{ alacritty.version }}_amd64.deb"
 # }}}
 - name: Install logo # {{{
   become: true
