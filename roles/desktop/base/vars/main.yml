@@ -67,6 +67,7 @@ packages:
   - pavucontrol
   - phantomjs
   - pkg-config
+  - pgcli
   - playerctl
   - postgresql-client
   - powerline
