@@ -374,3 +374,23 @@
     deb: "https://github.com/yakyak/yakyak/releases/download/v{{yakyak.version}}/yakyak-{{yakyak.version}}-linux-amd64.deb"
     state: present
 # }}}
+- name: Download & uncompress wtf # {{{
+  tags: wtf
+  unarchive:
+    src: https://github.com/wtfutil/wtf/releases/download/v{{wtf.version}}/wtf_{{wtf.version}}_linux_amd64.tar.gz
+    dest: /tmp/
+    remote_src: true
+    force: true
+- name: Move
+  tags: wtf
+  become: true
+  copy:
+    src: /tmp/wtf_{{wtf.version}}_linux_amd64/wtfutil
+    dest: /usr/local/bin/wtf
+    mode: 0755
+- name: Remove directory
+  tags: wtf
+  file:
+    path: /tmp/wtf_{{wtf.version}}_linux_amd64
+    state: absent
+# }}}
