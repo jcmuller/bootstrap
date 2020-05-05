@@ -307,6 +307,23 @@
     scripts/dictcli.py update
     scripts/dictcli.py install en-US
     scripts/dictcli.py install es-ES
+
+- name: Download qpm
+  tags: [qutebrowser, qpm]
+  git:
+    repo: git@github.com:pvsr/qpm.git
+    dest: ~/Development/OSS/qpm
+    accept_hostkey: true
+    update: true
+
+- name: Install it
+  tags: [qutebrowser, qpm]
+  become: true
+  args:
+    executable: /bin/bash
+    chdir: ~{{user.name}}/Development/OSS/qpm
+  shell: |
+    python3 setup.py install
 # }}}
 # {{{ tmux
 - name: Download tmux
