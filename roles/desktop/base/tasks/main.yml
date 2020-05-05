@@ -29,7 +29,7 @@
     state: latest
 # }}}
 - name: Install desktop packages # {{{
-  tags: [packages, desktop]
+  tags: [packages, desktop, i3packages]
   apt:
     name:
       - arandr
@@ -48,7 +48,7 @@
       - i3xrocks-weather
       - i3xrocks-wifi
       - qutebrowser # This is to get the prereqs
-      - font-terminus
+      - fonts-terminus
       - xfonts-terminus
     state: latest
 # }}}
