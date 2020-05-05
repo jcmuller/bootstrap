@@ -411,3 +411,23 @@
     path: /tmp/wtf_{{wtf.version}}_linux_amd64
     state: absent
 # }}}
+- name: Install efm-langserver # {{{
+  tags: efmlangserver
+  unarchive:
+    src: https://github.com/mattn/efm-langserver/releases/download/{{efmlangserver.version}}/efm-langserver_{{efmlangserver.version}}_linux_amd64.tar.gz
+    dest: /tmp/
+    remote_src: true
+    force: true
+- name: Move
+  tags: efmlangserver
+  become: true
+  copy:
+    src: /tmp/efm-langserver_{{efmlangserver.version}}_linux_amd64/efm-langserver
+    dest: /usr/local/bin/efm-langserver
+    mode: 0755
+- name: Remove directory
+  tags: efmlangserver
+  file:
+    path: /tmp/efm-langserver_{{efmlangserver.version}}_linux_amd64
+    state: absent
+# }}}

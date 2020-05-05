@@ -40,6 +40,9 @@ asdf:
 browserpass:
   version: 3.0.6
 
+efmlangserver:
+  version: v0.0.14
+
 gopass:
   version: 1.8.6
 
