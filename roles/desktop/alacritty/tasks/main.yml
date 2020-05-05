@@ -41,3 +41,12 @@
     desktop-file-install extra/linux/Alacritty.desktop
     update-desktop-database
 # }}}
+- name: Install alternative # {{{
+  become: true
+  args:
+    executable: /bin/bash
+    chdir: "~{{user.name}}/Development/OSS/alacritty"
+  shell: update-alternatives --install /usr/bin/x-terminal-emulator
+      x-terminal-emulator /usr/local/bin/alacritty 100
+
+# }}}
