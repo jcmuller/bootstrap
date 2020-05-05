@@ -46,6 +46,7 @@ packages:
   - libfreetype6-dev # alacritty
   - libmsgpack-dev
   - libncurses-dev # tmux
+  - libnss3-tools
   - libnotify-bin
   - libpq-dev
   - libreadline-dev
