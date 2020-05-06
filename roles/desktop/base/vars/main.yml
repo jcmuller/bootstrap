@@ -85,6 +85,7 @@ packages:
   - ranger
   - redis-tools
   - redshift-gtk
+  - regolith-compositor-none # disable compton
   - rofi
   - shellcheck
   - sloccount
