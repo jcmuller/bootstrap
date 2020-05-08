@@ -140,18 +140,12 @@
   tags: [gopass]
   file: path=/tmp/gopass state=directory
 
-- name: Download gopass
-  tags: [gopass]
-  get_url:
-    url: "{{ gopass_url }}"
-    dest: /tmp/gopass
-
 - name: Unpack gopass
   tags: [gopass]
-  shell: |
-    tar --strip-components=1 -zxpf *.tar.gz
-  args:
-    chdir: /tmp/gopass
+  unarchive:
+    src: "{{ gopass_url }}"
+    dest: /tmp/gopass/
+    remote_src: true
 
 - name: Install gopass
   tags: [gopass]
