@@ -245,8 +245,13 @@
 
 - name: Build browserpass
   tags: [browserpass]
-  make:
+  args:
+    executable: /bin/bash
     chdir: ~/Development/OSS/browserpass-native
+  shell: |
+    source ~/.asdf/asdf.sh
+    asdf reshim
+    make
 
 - name: Install browserpass
   tags: [browserpass]
@@ -358,9 +363,12 @@
 # }}}
 - name: Install tmuxinator # {{{
   tags: tmuxinator
-  gem:
-    executable: /home/jcmuller/.asdf/shims/gem
-    name: tmuxinator
+  args:
+    executable: /bin/bash
+  shell: |
+    source ~/.asdf/asdf.sh
+    asdf reshim
+    gem install tmuxinator
 # }}}
 - name: Install tmux config # {{{
   tags: [tmux, tmux-config]

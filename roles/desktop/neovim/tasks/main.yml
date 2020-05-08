@@ -38,9 +38,11 @@
     state: link
 # }}}
 - name: Install ruby libraries # {{{
-  gem:
-    name: neovim
-    executable: ~/.asdf/shims/gem
+  args:
+    executable: /bin/bash
+  shell: |
+    source ~/.asdf/asdf.sh
+    gem install neovim
 # }}}
 - name: Install neovim # {{{
   become: true
