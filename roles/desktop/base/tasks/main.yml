@@ -47,6 +47,7 @@
       - i3xrocks-volume
       - i3xrocks-weather
       - i3xrocks-wifi
+      - libjs-pdf # for qutebrowser
       - qutebrowser # This is to get the prereqs
       - fonts-terminus
       - xfonts-terminus
