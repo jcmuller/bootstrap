@@ -38,6 +38,7 @@ packages:
   - gnutls-bin
   - graphviz
   - htop
+  - isync
   - laptop-mode-tools
   - ldap-utils
   - libevent-dev # tmux
@@ -58,7 +59,6 @@ packages:
   - neomutt
   - network-manager-openvpn-gnome
   - nfs-common
-  - offlineimap
   - openssh-server
   - openvpn
   - openvpn-systemd-resolved
