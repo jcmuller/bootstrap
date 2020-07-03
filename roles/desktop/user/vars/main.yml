@@ -47,6 +47,10 @@ browserpass:
 efmlangserver:
   version: v0.0.14
 
+fonts:
+  iosevka:
+    version: 3.1.0
+
 gopass:
   version: 1.9.0
 

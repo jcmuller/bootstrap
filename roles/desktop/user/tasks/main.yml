@@ -433,3 +433,23 @@
     path: /tmp/efm-langserver_{{efmlangserver.version}}_linux_amd64
     state: absent
 # }}}
+# Install Iosevka font {{{
+- name: Ensure fonts dir exists
+  tags: fonts
+  file:
+    dest: ~/.fonts/iosevka
+    state: directory
+    mode: 0755
+
+- name: Install iosevka
+  tags: fonts
+  unarchive:
+    src: https://github.com/be5invis/Iosevka/releases/download/v{{fonts.iosevka.version}}/pkg-iosevka-{{fonts.iosevka.version}}.zip
+    dest: ~/.fonts/iosevka
+    remote_src: true
+    force: true
+
+- name: Refresh font cache
+  tags: fonts
+  command: fc-cache -fv
+# }}}
