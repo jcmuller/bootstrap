@@ -282,20 +282,20 @@
     update: true
     version: "{{qutebrowser.version}}"
 
-- name: Install dependencies
-  tags: qutebrowser
-  pip:
-    chdir: ~/Development/OSS/qutebrowser
-    requirements: requirements.txt
-
 - name: Install it
   tags: qutebrowser
   become: true
+  command: /usr/bin/python3 scripts/mkvenv.py
   args:
-    executable: /bin/bash
     chdir: ~{{user.name}}/Development/OSS/qutebrowser
-  shell: |
-    python3 setup.py install
+
+- name: Symlink qutebrowser
+  tags: qutebrowser
+  become: true
+  file:
+    src: ~{{user.name}}/Development/OSS/qutebrowser/.venv/bin/qutebrowser
+    dest: /usr/local/bin/qutebrowser
+    state: link
 
 - name: Install dictionaries
   tags: qutebrowser
