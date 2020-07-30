@@ -48,8 +48,8 @@ packages:
   - libfreetype6-dev # alacritty
   - libmsgpack-dev
   - libncurses-dev # tmux
-  - libnss3-tools
   - libnotify-bin
+  - libnss3-tools
   - libpq-dev
   - libreadline-dev
   - libssl-dev # required for older version of ruby
@@ -58,6 +58,7 @@ packages:
   - moreutils
   - msmtp
   - neomutt
+  - net-tools
   - network-manager-openvpn-gnome
   - nfs-common
   - openssh-server
@@ -67,9 +68,9 @@ packages:
   - pass-extension-tail
   - pasystray
   - pavucontrol
+  - pgcli
   - phantomjs
   - pkg-config
-  - pgcli
   - playerctl
   - postgresql-client
   - powerline
@@ -77,11 +78,11 @@ packages:
   - py3status
   - python3-boto
   - python3-dev
-  - python3-pip
   - python3-dnspython
+  - python3-pip
   - python3-tldextract
-  - python3-virtualenv
   - python3-venv # qutebrowser
+  - python3-virtualenv
   - qalc
   - qrencode
   - ranger
