@@ -114,7 +114,7 @@ slackcat:
   version: "1.6"
 
 yj:
-  version: v4.0.0
+  version: v5.0.0
 
 yq:
   version: 3.1.2
