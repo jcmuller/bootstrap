@@ -102,6 +102,7 @@ packages:
   - xclip
   - xdotool
   - xfonts-terminus
+  - zathura
   - zsh
 
 plantuml:
