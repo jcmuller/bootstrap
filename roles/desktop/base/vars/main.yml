@@ -57,6 +57,7 @@ packages:
   - libxcb-xfixes0-dev # alacritty
   - moreutils
   - msmtp
+  - mpv
   - neomutt
   - net-tools
   - network-manager-openvpn-gnome
