@@ -1,0 +1,62 @@
+---
+- name: Install openvpn
+  apt:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
+      - openvpn
+      - dnsmasq
+
+- name: Install dnsmasq config
+  copy:
+    src: dnsmasq.d/
+    dest: /etc/dnsmasq.d/
+    owner: root
+    group: root
+
+- name: Disable systemd-resolved systemd unit
+  systemd:
+    name: systemd-resolved
+    state: stopped
+    enabled: no
+
+- name: Start dnsmasq
+  systemd:
+    name: dnsmasq
+    state: restarted
+
+- name: Stop network-manager mucking with dns
+  replace:
+    path: /etc/NetworkManager/NetworkManager.conf
+    regexp: "(dns=)(.+)$"
+    replace: '\1dnsmasq'
+    backup: yes
+
+- name: Remove default resolv.conf
+  copy:
+    dest: /etc/resolv.conf
+    content: ""
+    force: yes
+
+- name: Reload network-manager systemd unit
+  systemd:
+    name: network-manager
+    state: reloaded
+
+- name: Installer sudoers config
+  copy:
+    src: sudoers.d/
+    dest: /etc/sudoers.d/
+    owner: root
+    group: root
+    mode: 0440
+    validate: "visudo -cf %s"
+
+- name: Install vpn scripts
+  copy:
+    src: bin/
+    dest: /usr/local/bin/
+    owner: root
+    group: root
+    mode: 0755

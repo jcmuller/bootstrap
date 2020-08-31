@@ -1,0 +1,13 @@
+bind-interfaces
+
+listen-address=127.0.0.1
+listen-address=127.0.0.53
+
+strict-order
+no-resolv
+
+cache-size=1000
+# avoid dns failures when there are too many concurrent requests (sometimes happens with apt-get)
+dns-forward-max=300
+
+server=192.168.20.1

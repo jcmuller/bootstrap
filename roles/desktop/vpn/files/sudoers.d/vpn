@@ -1,0 +1,2 @@
+jcmuller ALL=(ALL) NOPASSWD: /usr/sbin/openvpn
+jcmuller ALL=(ALL) NOPASSWD: /usr/bin/killall /usr/sbin/openvpn
