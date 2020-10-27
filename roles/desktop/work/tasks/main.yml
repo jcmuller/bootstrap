@@ -143,3 +143,25 @@
     path: /tmp/dive
     state: absent
 # }}}
+# {{{ Install terraform-ls
+- name: Install terraform-ls
+  tags: [k8s, terraform-ls]
+  unarchive:
+    src: https://github.com/hashicorp/terraform-ls/releases/download/v{{ terraform_ls.version }}/terraform-ls_{{ terraform_ls.version }}_linux_amd64.zip
+    dest: /usr/local/bin/
+    remote_src: true
+    owner: root
+    group: root
+    mode: 0755
+# }}}
+# {{{ Install terraform-lsp
+- name: Install terraform-lsp
+  tags: [k8s, terraform-lsp]
+  unarchive:
+    src: https://github.com/juliosueiras/terraform-lsp/releases/download/v{{ terraform_lsp.version }}/terraform-lsp_{{ terraform_lsp.version }}_linux_amd64.tar.gz
+    dest: /usr/local/bin/
+    remote_src: true
+    owner: root
+    group: root
+    mode: 0755
+# }}}
