@@ -93,7 +93,8 @@
     path: /tmp/duoconnect
     state: absent
 # }}}
-- name: Install go-jira # {{{
+# {{{ Install go-jira
+- name: Install go-jira
   tags: [jira]
   become: true
   become_user: root
