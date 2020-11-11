@@ -65,7 +65,7 @@ summon:
   version: v0.8.1
 
 tmux:
-  version: "3.1"
+  version: 3.1c
 
 version_manager_shell_string:
   version: v0.0.1
