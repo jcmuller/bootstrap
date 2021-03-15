@@ -290,3 +290,13 @@
     deb: https://dbeaver.io/files/{{dbeaver.version}}/dbeaver-ce_{{dbeaver.version}}_amd64.deb
     state: present
 # }}}
+- name: Install ncspot # {{{
+  tags: ncspot
+  get_url:
+    url: https://github.com/hrkfdn/ncspot/releases/download/{{ncspot.version}}/ncspot-{{ncspot.version}}-linux.tar.gz
+    dest: /usr/local/bin/ncspot
+    owner: root
+    group: root
+    mode: 0755
+    force: true
+# }}}
