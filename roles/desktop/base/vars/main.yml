@@ -1,6 +1,6 @@
 ---
 dbeaver:
-  version: 21.0.0
+  version: 21.0.2
 
 docker_compose:
   version: 1.25.4
