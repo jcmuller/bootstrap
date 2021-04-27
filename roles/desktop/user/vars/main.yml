@@ -71,7 +71,7 @@ version_manager_shell_string:
   version: v0.0.1
 
 yakyak:
-  version: 1.5.11
+  version: 1.5.11.3
 
 wtf:
   version: 0.29.0
