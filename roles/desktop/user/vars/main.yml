@@ -52,7 +52,7 @@ fonts:
     version: 3.1.0
 
 gopass:
-  version: 1.10.1
+  version: 1.12.6
 
 helm:
   plugins:
