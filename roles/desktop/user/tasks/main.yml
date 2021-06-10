@@ -285,7 +285,7 @@
 - name: Install it
   tags: qutebrowser
   become: true
-  command: /usr/bin/python3 scripts/mkvenv.py
+  command: /usr/bin/python3 scripts/mkvenv.py --venv-dir=.venv-{{qutebrowser.version}}
   args:
     chdir: ~{{user.name}}/Development/OSS/qutebrowser
 
@@ -293,8 +293,8 @@
   tags: qutebrowser
   become: true
   file:
-    src: ~{{user.name}}/Development/OSS/qutebrowser/.venv/bin/qutebrowser
-    dest: /usr/local/bin/qutebrowser
+    src: ~{{user.name}}/Development/OSS/qutebrowser/.venv-{{qutebrowser.version}}/bin/qutebrowser
+    dest: /usr/local/bin/qutebrowser-{{qutebrowser.version}}
     state: link
 
 - name: Install dictionaries
