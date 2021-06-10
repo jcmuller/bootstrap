@@ -25,6 +25,8 @@ packages:
   - abook
   - apt-transport-https
   - asciidoc-base # qutebrowser
+  - asciidoc-common # qutebrowser
+  - asciidoc # qutebrowser
   - autorandr
   - awscli
   - bat
@@ -58,9 +60,10 @@ packages:
   - libssl-dev # required for older version of ruby
   - libtool-bin # neovim
   - libxcb-xfixes0-dev # alacritty
+  - libyaml-dev # qutebrowser
   - moreutils
-  - msmtp
   - mpv
+  - msmtp
   - neomutt
   - net-tools
   - network-manager-openvpn-gnome
