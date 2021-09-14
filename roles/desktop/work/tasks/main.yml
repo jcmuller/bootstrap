@@ -35,34 +35,12 @@
     mode: 0755
 # }}}
 # {{{ Install teleport
-- name: Create teleport install dir
-  tags: [k8s, teleport]
-  file: path=/tmp/teleport state=directory
-
 - name: Install teleport
+  become: true
   tags: [k8s, teleport]
-  unarchive:
-    src: https://get.gravitational.com/teleport-{{ teleport.version }}-linux-amd64-bin.tar.gz
-    dest: /tmp/
-    remote_src: true
-    owner: root
-    group: root
-    mode: 0755
-
-- name: Install teleport
-  tags: [k8s, teleport]
-  copy:
-    src: /tmp/teleport/tsh
-    dest: /usr/local/bin/tsh
-    owner: root
-    group: root
-    mode: 0755
-
-- name: Remove teleport installation files
-  tags: [k8s, teleport]
-  file:
-    path: /tmp/teleport
-    state: absent
+  apt:
+    deb: "https://get.gravitational.com/teleport-ent_{{ teleport.version }}_amd64.deb"
+    state: present
 # }}}
 # Install duoconnect {{{
 - name: Create install dir

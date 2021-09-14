@@ -10,7 +10,7 @@ op:
   version: v1.7.0
 
 teleport:
-  version: v4.2.1
+  version: 7.1.1
 
 gojira:
   version: v1.0.23
