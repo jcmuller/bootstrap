@@ -303,9 +303,9 @@
     executable: /bin/bash
     chdir: ~/Development/OSS/qutebrowser
   shell: |
-    scripts/dictcli.py update
-    scripts/dictcli.py install en-US
-    scripts/dictcli.py install es-ES
+    .venv-{{qutebrowser.version}}/bin/python scripts/dictcli.py update
+    .venv-{{qutebrowser.version}}/bin/python scripts/dictcli.py install en-US
+    .venv-{{qutebrowser.version}}/bin/python scripts/dictcli.py install es-ES
 
 - name: Download qpm
   tags: [qutebrowser, qpm]
