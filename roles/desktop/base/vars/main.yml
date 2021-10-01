@@ -12,6 +12,9 @@ docker_engine:
 docker_machine:
   version: 0.16.0
 
+fasd:
+  version: 1.0.1
+
 jq:
   version: "1.6"
 

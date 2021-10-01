@@ -324,3 +324,27 @@
     path: /tmp/ncspot
     state: absent
 # }}}
+# Install fasd {{{
+- name: Ensure directory exists
+  tags: [packages, desktop, fasd]
+  file: path=/tmp/fasd state=directory
+
+- name: Download and uncompress
+  tags: fasd
+  unarchive:
+    src: https://github.com/clvv/fasd/archive/refs/tags/{{ fasd.version }}.tar.gz
+    dest: /tmp/fasd
+    remote_src: true
+
+- name: Install fasd
+  tags: fasd
+  ansible.builtin.shell: make install
+  args:
+    chdir: /tmp/fasd/fasd-{{ fasd.version }}/
+
+- name: Remove fasd installation files
+  tags: fasd
+  file:
+    path: /tmp/fasd
+    state: absent
+# }}}
