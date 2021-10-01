@@ -16,7 +16,7 @@ gojira:
   version: v1.0.23
 
 terraform_ls:
-  version: 0.8.0
+  version: 0.22.0
 
 terraform_lsp:
-  version: 0.0.10
+  version: 0.0.12
