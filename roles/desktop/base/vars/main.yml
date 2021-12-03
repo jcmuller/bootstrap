@@ -41,6 +41,7 @@ packages:
   - curl
   - dunst
   - elinks
+  - fd-find
   - gettext # neovim
   - git
   - gnupg2
