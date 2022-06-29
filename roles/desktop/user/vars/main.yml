@@ -59,7 +59,7 @@ helm:
     - source: https://github.com/databus23/helm-diff
 
 qutebrowser:
-  version: v2.5.0
+  version: v2.5.2
 
 summon:
   version: v0.9.1
