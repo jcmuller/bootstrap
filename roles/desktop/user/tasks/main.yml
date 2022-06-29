@@ -453,3 +453,10 @@
   tags: fonts
   command: fc-cache -fv
 # }}}
+- name: Install 1password # {{{
+  tags: [packages, desktop, 1password]
+  become: true
+  apt:
+    deb: https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb
+    state: present
+# }}}
