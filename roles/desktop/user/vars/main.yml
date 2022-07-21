@@ -62,7 +62,7 @@ qutebrowser:
   version: v2.5.0
 
 summon:
-  version: v0.9.0
+  version: v0.9.1
 
 tmux:
   version: 3.1c
