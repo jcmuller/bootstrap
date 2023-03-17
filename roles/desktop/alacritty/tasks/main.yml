@@ -48,5 +48,23 @@
     chdir: "~{{user.name}}/Development/OSS/alacritty"
   shell: update-alternatives --install /usr/bin/x-terminal-emulator
       x-terminal-emulator /usr/bin/alacritty 100
-
+# }}}
+- name: Install man page # {{{
+  become: true
+  args:
+    executable: /bin/bash
+    chdir: "~{{user.name}}/Development/OSS/alacritty"
+  shell: |
+    sudo mkdir -p /usr/local/share/man/man1
+    gzip -c extra/alacritty.man | sudo tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
+    gzip -c extra/alacritty-msg.man | sudo tee /usr/local/share/man/man1/alacritty-msg.1.gz > /dev/null
+# }}}
+- name: Install completions # {{{
+  become: false
+  copy:
+    src:  "~{{user.name}}/Development/OSS/alacritty/extra/completions/_alacritty"
+    dest: "~{{user.name}}/.local/share/zsh/functions/_alacritty"
+    owner: "{{user.name}}"
+    group: "{{user.name}}"
+    mode: 0644
 # }}}
