@@ -30,7 +30,7 @@
     dest: /usr/share/pixmaps/Alacritty.svg
     owner: root
     group: root
-    mode: 0755
+    mode: 0664
 # }}}
 - name: Install desktop entry # {{{
   become: true
