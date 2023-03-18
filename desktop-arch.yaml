@@ -11,9 +11,11 @@
 
   pre_tasks:
     - name: What is this?
-      tags: pre_tasks
+      tags: [pre_tasks, inventory]
       debug:
-        msg: "{{ ansible_distribution }}"
+        msg: |
+          distribution: {{ ansible_distribution }}
+          hostname: {{ ansible_facts.hostname }}
 
     - name: Update all packages using pacman
       tags: pre_tasks
@@ -31,7 +33,7 @@
       become: true
 
   roles:
-    - {role: desktop/interception, tags: interception, become: true, when: ansible_facts.hostname == "t460p"}
+    - {role: desktop/interception, tags: interception, become: true, when: ansible_facts.hostname == "t460s"}
     - {role: desktop/arch, tags: arch, become: true}
     - {role: desktop/helix, tags: helix}
   #   - {role: desktop/user, tags: user}
