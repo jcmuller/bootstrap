@@ -1,0 +1,40 @@
+---
+- name: Install interception
+  community.general.pacman:
+    name:
+      - interception-dual-function-keys
+      - interception-tools
+
+- name: Ensure directory exists
+  ansible.builtin.file:
+    path: "/etc/interception/{{item}}"
+    state: directory
+  with_items:
+    - dual-function-keys
+    - udevmon.d
+
+- name: Configure keyboard
+  ansible.builtin.copy:
+    src: keyboard.yaml
+    dest: /etc/interception/udevmon.d/
+    owner: root
+    group: root
+    mode: 0644
+  register: keyboard
+
+- name: Configure mappings
+  ansible.builtin.copy:
+    src: mappings.yaml
+    dest: /etc/interception/dual-function-keys/
+    owner: root
+    group: root
+    mode: 0644
+  register: mappings
+
+- name: Start udevmon
+  ansible.builtin.systemd:
+    name: udevmon.service
+    enabled: true
+    state: restarted
+    daemon_reload: true
+  when: keyboard.changed or mappings.changed

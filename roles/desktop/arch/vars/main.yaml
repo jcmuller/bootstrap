@@ -1,0 +1,123 @@
+---
+arch:
+  packages:
+    # configuration
+    - gopass
+    - gopass-jsonapi
+    - pinentry-rofi
+    - stow
+
+    # workspace
+    - alacritty
+    - antigen
+    - arandr
+    - autorandr
+    - bat
+    - dtach
+    - lazygit
+    - paruz
+    - ripgrep
+    - starship
+    - sxiv
+    - syncthing
+    - syncthing-gtk-python3
+    - tmux
+    - tmuxinator
+    - vault
+    - zsh
+
+    # audio
+    - pa-notify
+    - pasystray
+    - pavucontrol
+    - pipewire-pulse
+    - playerctl
+    - spotify
+
+    # utilities
+    - brave-bin
+    - element-desktop
+    - pdfjs-legacy
+    - qutebrowser
+    - remmina
+    - slack-desktop
+
+    # graphical
+    - arandr
+    - hsetroot
+    - i3-wm
+    - i3blocks
+    - i3lock
+    - network-manager-applet
+    - noto-fonts
+    - noto-fonts-extra
+    - redshift
+    - rofi
+    - rofi-greenclip
+    - rofi-pass
+    - terminus-font
+    - terminus-font-ttf
+    - ttf-bitstream-vera
+    - ttf-dejavu
+    - ttf-font-awesome
+    - ttf-gofont-git
+    - ttf-iosevka
+    - ttf-iosevka-nerd
+    - ttf-iosevka-term
+    - ttf-liberation
+    - ttf-ms-fonts
+    - ttf-terminus-nerd
+    - usbview
+    - xcompmgr
+    - xdotool
+    - xss-lock
+    - zathura
+    - zathura-cb
+    - zathura-djvu
+    - zathura-pdf-mupdf
+    - zathura-ps
+    - zenity
+
+    # tools
+    - jwt-cli
+    - nvme-cli
+
+    # mail
+    - isync
+    - msmtp
+    - neomutt
+    - urlview
+
+    # design
+    - openscad
+    - prusa-slicer
+
+    # system
+    - gnupg
+    - gparted
+    - rsync
+    - rsyslog
+    - sudo
+    - tree
+
+    # networking
+    - net-tools
+    - networkmanager
+    - networkmanager-openvpn
+    - nfs-utils
+    - nmap
+    - wget
+
+    # sysadmin-servers
+    - guestfs-tools
+
+    # kubernetes
+    # - helm
+    # - jsonnet
+    # - kubectl
+    # - kustomize
+    # - minikube
+    # - terraform
+    # - vault
+    - logcli
+    - stern

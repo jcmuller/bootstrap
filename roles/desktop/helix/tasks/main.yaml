@@ -1,0 +1,71 @@
+---
+- name: Ensure cargo is installed
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name:
+      - cargo
+
+- name: Ensure directory exists
+  ansible.builtin.file:
+    path: "{{user.home}}/Development"
+    state: directory
+
+- name: Clone helix
+  ansible.builtin.git:
+    repo: git@github.com:{{item}}.git
+    dest: "{{user.home}}/Development/github.com/{{item}}"
+  with_items:  
+    - helix-editor/helix
+  register: updated
+
+- name: Install helix
+  when: updated.changed
+  ansible.builtin.command: cargo install --locked --path helix-term
+  args:
+    chdir: "{{user.home}}/Development/github.com/helix-editor/helix"
+
+- name: Set up runtime
+  ansible.builtin.lineinfile:
+    path: "{{user.home}}/.zshrc"
+    line: export HELIX_RUNTIME=~/Development/github.com/helix-editor/helix/runtime
+    search_string: HELIX_RUNTIME
+    state: present
+
+- name: Set as EDITOR
+  ansible.builtin.lineinfile:
+    path: "{{user.home}}/.zshrc"
+    line: export EDITOR=hx
+    search_string: " EDITOR="
+    state: present
+
+- name: Fetch grammars
+  ansible.builtin.command: ~/.cargo/bin/hx --grammar fetch
+  register: fetched
+
+- name: Install grammars
+  ansible.builtin.command: ~/.cargo/bin/hx --grammar build
+  when: fetched.changed
+
+- name: Refresh dotrcs
+  ansible.builtin.git:
+    repo: git@github.com:{{item}}.git
+    dest: "/home/{{item}}"
+  with_items:  
+    - "{{user.name}}/dotrcs"
+  register: updated_dotrcs
+
+- name: Install config
+  when: updated_dotrcs.changed
+  ansible.builtin.command: stow helix
+  args:
+    chdir: "{{user.home}}/dotrcs"
+
+- name: Install language servers
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name:
+      - gopls
+      - openscad-language-server
+      - yaml-language-server
+      - bash-language-server

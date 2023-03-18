@@ -1,0 +1,53 @@
+---
+- name: Provision a new arch
+  hosts: all, localhost
+  gather_facts: true
+
+  vars:
+    user:
+      name: jcmuller
+      group: jcmuller
+      home: /home/jcmuller
+
+  pre_tasks:
+    - name: What is this?
+      tags: pre_tasks
+      debug:
+        msg: "{{ ansible_distribution }}"
+
+    - name: Update all packages using pacman
+      tags: pre_tasks
+      community.general.pacman:
+        upgrade: true
+        update_cache: true
+      become: true
+
+    - name: Create user
+      ansible.builtin.user:
+        name: "{{ user.name }}"
+        groups: audio,users,video,wheel
+        append: true
+        shell: /usr/bin/zsh
+      become: true
+
+  roles:
+    - {role: desktop/interception, tags: interception, become: true}
+    - {role: desktop/arch, tags: arch, become: true}
+    - {role: desktop/helix, tags: helix}
+  #   - {role: desktop/user, tags: user}
+  #   - {role: desktop/alacritty, tags: alacritty}
+  #   - {role: desktop/neovim, tags: neovim}
+  #   - {role: desktop/iptables, tags: iptables, become: true}
+
+  # post_tasks:
+  #   - name: Add {{ user.name }} to docker group
+  #     tags:
+  #       - docker
+  #       - groups
+  #     user:
+  #       name: "{{ user.name }}"
+  #       groups:
+  #         - docker
+  #         - sudo
+  #       append: true
+  #     become: true
